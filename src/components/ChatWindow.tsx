@@ -2,7 +2,8 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { X, Send, MessageCircle } from "lucide-react";
 import ChatMessage, { type Message } from "./ChatMessage";
 import TypingIndicator from "./TypingIndicator";
-import { searchKnowledge } from "@/lib/knowledgeBase";
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const WELCOME_MESSAGE: Message = {
   id: "welcome",
@@ -49,18 +50,37 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setInput("");
     setIsTyping(true);
 
-    // Simulate processing delay
-    await new Promise((r) => setTimeout(r, 800 + Math.random() * 700));
+    try {
+      const res = await fetch(`${API_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
 
-    const answer = searchKnowledge(text);
-    const botMsg: Message = {
-      id: (Date.now() + 1).toString(),
-      role: "bot",
-      content: answer,
-      timestamp: new Date(),
-    };
-    setIsTyping(false);
-    setMessages((prev) => [...prev, botMsg]);
+      if (!res.ok) throw new Error("API request failed");
+
+      const data = await res.json();
+      const botMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "bot",
+        content: data.reply,
+        timestamp: new Date(),
+      };
+      setIsTyping(false);
+      setMessages((prev) => [...prev, botMsg]);
+    } catch {
+      // Fallback to local knowledge base search if backend is unavailable
+      const { searchKnowledge } = await import("@/lib/knowledgeBase");
+      const answer = searchKnowledge(text);
+      const botMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "bot",
+        content: answer,
+        timestamp: new Date(),
+      };
+      setIsTyping(false);
+      setMessages((prev) => [...prev, botMsg]);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
