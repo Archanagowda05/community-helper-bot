@@ -13,6 +13,15 @@ const WELCOME_MESSAGE: Message = {
   timestamp: new Date(),
 };
 
+const SUGGESTION_CHIPS = [
+  { label: "📅 Events", query: "Tell me about upcoming events" },
+  { label: "📜 Rules", query: "What are the community rules?" },
+  { label: "❓ FAQ", query: "Show me frequently asked questions" },
+  { label: "👥 Roles", query: "What roles are available?" },
+  { label: "🛡️ Moderation", query: "How does moderation work?" },
+  { label: "📖 History", query: "Tell me about the community history" },
+];
+
 interface ChatWindowProps {
   onClose: () => void;
 }
@@ -21,6 +30,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showChips, setShowChips] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -36,9 +46,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     inputRef.current?.focus();
   }, []);
 
-  const handleSend = async () => {
-    const text = input.trim();
-    if (!text || isTyping) return;
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isTyping) return;
+    setShowChips(false);
 
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -69,7 +79,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       setIsTyping(false);
       setMessages((prev) => [...prev, botMsg]);
     } catch {
-      // Fallback to local knowledge base search if backend is unavailable
       const { searchKnowledge } = await import("@/lib/knowledgeBase");
       const answer = searchKnowledge(text);
       const botMsg: Message = {
@@ -82,6 +91,10 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       setMessages((prev) => [...prev, botMsg]);
     }
   };
+
+  const handleSend = () => sendMessage(input.trim());
+
+  const handleChipClick = (query: string) => sendMessage(query);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -118,6 +131,19 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         {messages.map((msg) => (
           <ChatMessage key={msg.id} message={msg} />
         ))}
+        {showChips && !isTyping && (
+          <div className="flex flex-wrap gap-2 pt-1">
+            {SUGGESTION_CHIPS.map((chip) => (
+              <button
+                key={chip.label}
+                onClick={() => handleChipClick(chip.query)}
+                className="px-3 py-1.5 text-xs rounded-full border border-primary/30 bg-primary/5 text-primary hover:bg-primary/15 transition-colors whitespace-nowrap"
+              >
+                {chip.label}
+              </button>
+            ))}
+          </div>
+        )}
         {isTyping && <TypingIndicator />}
       </div>
 
