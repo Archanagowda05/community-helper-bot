@@ -17,8 +17,8 @@ const SUGGESTION_CHIPS = [
   { label: "📅 Events", query: "Tell me about upcoming events" },
   { label: "📜 Rules", query: "What are the community rules?" },
   { label: "❓ FAQ", query: "Show me frequently asked questions" },
-  { label: "👥 Roles", query: "What roles are available?" },
-  { label: "🛡️ Moderation", query: "How does moderation work?" },
+  { label: "ℹ️ About Us", query: "Tell me about TechNexus" },
+  { label: "🚀 Getting Started", query: "How do I get started?" },
   { label: "📖 History", query: "Tell me about the community history" },
 ];
 
