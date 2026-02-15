@@ -19,7 +19,7 @@ const knowledgeBase: KnowledgeEntry[] = [
   {
     section: "overview",
     content: "TechNexus is open to students, beginners, and technology enthusiasts interested in software development, artificial intelligence, data science, and emerging technologies.",
-    keywords: ["join", "who", "eligible", "students", "beginners", "open to", "members"],
+    keywords: ["join", "eligible", "students", "beginners", "open to", "members", "who can join"],
   },
   // Events
   {
@@ -150,9 +150,21 @@ const knowledgeBase: KnowledgeEntry[] = [
   },
 ];
 
+const STOP_WORDS = new Set([
+  "the", "is", "are", "was", "were", "what", "who", "how", "why", "when",
+  "where", "which", "that", "this", "can", "does", "has", "have", "had",
+  "will", "would", "should", "could", "may", "might", "shall", "been",
+  "being", "about", "with", "from", "into", "for", "and", "but", "not",
+  "you", "your", "they", "their", "our", "its", "also", "than", "then",
+  "tell", "show", "give", "know", "like", "just", "some", "any", "all",
+  "very", "more", "most", "other", "each", "every", "both", "few", "many",
+]);
+
 export function searchKnowledge(query: string): string {
   const queryLower = query.toLowerCase();
-  const queryWords = queryLower.split(/\\s+/).filter(w => w.length > 2);
+  const queryWords = queryLower
+    .split(/\s+/)
+    .filter(w => w.length > 2 && !STOP_WORDS.has(w));
 
   const scored = knowledgeBase.map(entry => {
     let score = 0;
@@ -167,7 +179,7 @@ export function searchKnowledge(query: string): string {
   });
 
   scored.sort((a, b) => b.score - a.score);
-  const topResults = scored.filter(s => s.score > 0).slice(0, 2);
+  const topResults = scored.filter(s => s.score >= 3).slice(0, 2);
 
   if (topResults.length === 0) {
     return "I don't have that information in the TechNexus community knowledge base.";
