@@ -31,6 +31,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showChips, setShowChips] = useState(true);
+  const [chipsSent, setChipsSent] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,6 +50,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const sendMessage = async (text: string) => {
     if (!text.trim() || isTyping) return;
     setShowChips(false);
+    setChipsSent(true);
 
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -78,6 +80,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       };
       setIsTyping(false);
       setMessages((prev) => [...prev, botMsg]);
+      setShowChips(true);
     } catch {
       const { searchKnowledge } = await import("@/lib/knowledgeBase");
       const answer = searchKnowledge(text);
@@ -89,6 +92,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       };
       setIsTyping(false);
       setMessages((prev) => [...prev, botMsg]);
+      setShowChips(true);
     }
   };
 
@@ -133,6 +137,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         ))}
         {showChips && !isTyping && (
           <div className="flex flex-wrap gap-2 pt-1">
+            <p className="w-full text-xs text-muted-foreground mb-1">
+              {chipsSent ? "What else would you like to know?" : "Quick topics to explore:"}
+            </p>
             {SUGGESTION_CHIPS.map((chip) => (
               <button
                 key={chip.label}

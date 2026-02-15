@@ -114,7 +114,7 @@ export function searchKnowledge(query: string): string {
   const topResults = scored.filter(s => s.score > 0).slice(0, 3);
 
   if (topResults.length === 0) {
-    return "I don't have that information in the community knowledge base. Feel free to ask about our community overview, events, FAQ, roles, moderation, rules, or history!";
+    return "I'm sorry, I don't have that information in our knowledge base. Please contact a community admin for further assistance.";
   }
 
   return topResults.map(r => r.entry.content).join("\n\n");
