@@ -1,30 +1,17 @@
-# Community Events
+# TechNexus Events
 
-## Weekly Meetups
+## Weekly Tech Meetups
 
-We host weekly community meetups every **Wednesday at 7 PM EST** via our virtual meeting room. These meetups feature guest speakers, project showcases, and open discussion sessions. All members are welcome to attend and participate.
+TechNexus conducts weekly meetups every Sunday at 10 AM where members discuss technical topics, share learning resources, and review progress.
 
-## Annual Community Summit
+## Monthly Hackathons
 
-Our annual Community Summit takes place every **September**. It's a 3-day event featuring:
-- Workshops and hands-on sessions
-- Hackathons with prizes
-- Networking sessions
-- Keynote presentations from industry leaders
+A monthly hackathon is organized on the last Saturday of every month, encouraging members to build innovative projects in teams.
 
-Early bird registration typically opens in **June**.
+## Workshops and Bootcamps
 
-## Monthly Skill-Sharing Sessions
+Hands-on workshops and short bootcamps are conducted regularly on topics such as web development, AI, machine learning, and cloud computing.
 
-Held on the **first Saturday of each month**, members can sign up to teach a 30-minute session on any topic they're passionate about. Past topics include:
-- Web development
-- Digital art and design
-- Machine learning basics
-- Public speaking
-- Open-source contribution
+## Guest Speaker Sessions
 
-## How to Participate
-
-- Check the **#events** channel on Discord for upcoming events
-- RSVP through the community calendar
-- Volunteer to speak or host a session by contacting any moderator
+Industry professionals and experienced developers are invited to share insights and career guidance through guest sessions.

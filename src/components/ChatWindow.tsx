@@ -9,7 +9,7 @@ const WELCOME_MESSAGE: Message = {
   id: "welcome",
   role: "bot",
   content:
-    "Hi there! 👋 I'm the Community AI Assistant. I can help you with questions about our community overview, events, FAQ, roles, moderation, rules, and history. What would you like to know?",
+    "Hi there! 👋 I'm the TechNexus Support Bot. I can help you with questions about our community, events, rules, roles, moderation, and more. What would you like to know?",
   timestamp: new Date(),
 };
 
@@ -117,9 +117,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
           </div>
           <div>
             <h3 className="font-heading font-semibold text-sm text-chat-header-foreground">
-              Community Assistant
+              TechNexus Support
             </h3>
-            <p className="text-xs text-chat-header-foreground/70">Always here to help</p>
+            <p className="text-xs text-chat-header-foreground/70">Ask anything about our community</p>
           </div>
         </div>
         <button
