@@ -137,6 +137,17 @@ const knowledgeBase: KnowledgeEntry[] = [
     content: "Key milestones include hosting the first hackathon, organizing industry-led workshops, and reaching a growing member base across multiple institutions.",
     keywords: ["milestones", "achievements", "hackathon", "workshops", "institutions"],
   },
+  // Getting Started
+  {
+    section: "getting_started",
+    content: "To get started, register through the official TechNexus website or accept an invitation. Membership is free. Introduce yourself in the welcome channel and explore available resources.",
+    keywords: ["getting started", "start", "begin", "onboard", "new member", "first steps", "how to start"],
+  },
+  {
+    section: "getting_started",
+    content: "Attend your first weekly meetup on Sunday at 10 AM, join a project or study group, and start asking questions in discussion channels.",
+    keywords: ["first event", "meetup", "study group", "project", "contribute", "participate"],
+  },
 ];
 
 export function searchKnowledge(query: string): string {
