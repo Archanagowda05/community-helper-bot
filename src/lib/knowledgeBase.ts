@@ -170,7 +170,7 @@ export function searchKnowledge(query: string): string {
   const topResults = scored.filter(s => s.score > 0).slice(0, 2);
 
   if (topResults.length === 0) {
-    return "I'm sorry, I don't have that information. Please contact a community admin for further assistance.";
+    return "I don't have that information in the TechNexus community knowledge base.";
   }
 
   return topResults.map(r => r.entry.content).join(" ");
