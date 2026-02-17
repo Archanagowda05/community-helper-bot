@@ -9,7 +9,7 @@ const WELCOME_MESSAGE: Message = {
   id: "welcome",
   role: "bot",
   content:
-    "Hi there! 👋 I'm the Community AI Assistant. I can help you with questions about our community overview, events, FAQ, roles, moderation, rules, and history. What would you like to know?",
+    "Hi there! 👋 I'm the TechNexus Support Bot. I can help you with questions about our community, events, rules, roles, moderation, and more. What would you like to know?",
   timestamp: new Date(),
 };
 
@@ -17,8 +17,8 @@ const SUGGESTION_CHIPS = [
   { label: "📅 Events", query: "Tell me about upcoming events" },
   { label: "📜 Rules", query: "What are the community rules?" },
   { label: "❓ FAQ", query: "Show me frequently asked questions" },
-  { label: "👥 Roles", query: "What roles are available?" },
-  { label: "🛡️ Moderation", query: "How does moderation work?" },
+  { label: "ℹ️ About Us", query: "Tell me about TechNexus" },
+  { label: "🚀 Getting Started", query: "How do I get started?" },
   { label: "📖 History", query: "Tell me about the community history" },
 ];
 
@@ -31,6 +31,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showChips, setShowChips] = useState(true);
+  const [chipsSent, setChipsSent] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,6 +50,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const sendMessage = async (text: string) => {
     if (!text.trim() || isTyping) return;
     setShowChips(false);
+    setChipsSent(true);
 
     const userMsg: Message = {
       id: Date.now().toString(),
@@ -78,6 +80,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       };
       setIsTyping(false);
       setMessages((prev) => [...prev, botMsg]);
+      setShowChips(true);
     } catch {
       const { searchKnowledge } = await import("@/lib/knowledgeBase");
       const answer = searchKnowledge(text);
@@ -89,6 +92,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       };
       setIsTyping(false);
       setMessages((prev) => [...prev, botMsg]);
+      setShowChips(true);
     }
   };
 
@@ -113,9 +117,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
           </div>
           <div>
             <h3 className="font-heading font-semibold text-sm text-chat-header-foreground">
-              Community Assistant
+              TechNexus Support
             </h3>
-            <p className="text-xs text-chat-header-foreground/70">Always here to help</p>
+            <p className="text-xs text-chat-header-foreground/70">Ask anything about our community</p>
           </div>
         </div>
         <button
@@ -133,6 +137,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         ))}
         {showChips && !isTyping && (
           <div className="flex flex-wrap gap-2 pt-1">
+            <p className="w-full text-xs text-muted-foreground mb-1">
+              {chipsSent ? "What else would you like to know?" : "Quick topics to explore:"}
+            </p>
             {SUGGESTION_CHIPS.map((chip) => (
               <button
                 key={chip.label}
