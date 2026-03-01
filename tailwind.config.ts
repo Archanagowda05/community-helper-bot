@@ -85,8 +85,12 @@ export default {
           to: { height: "0" },
         },
         "chat-slide-up": {
-          from: { opacity: "0", transform: "translateY(16px) scale(0.95)" },
+          from: { opacity: "0", transform: "translateY(20px) scale(0.95)" },
           to: { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        "chat-slide-down": {
+          from: { opacity: "1", transform: "translateY(0) scale(1)" },
+          to: { opacity: "0", transform: "translateY(20px) scale(0.95)" },
         },
         "chat-fade-in": {
           from: { opacity: "0", transform: "translateY(8px)" },
@@ -104,8 +108,8 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "chat-slide-up": "chat-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-        "chat-fade-in": "chat-fade-in 0.25s ease-out",
+        "chat-slide-up": "chat-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "chat-slide-down": "chat-slide-down 0.25s ease-in forwards",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
         "typing-dot-1": "typing-dot 1.4s ease-in-out infinite",
         "typing-dot-2": "typing-dot 1.4s ease-in-out 0.2s infinite",
