@@ -160,15 +160,12 @@ const STOP_WORDS = new Set([
   "very", "more", "most", "other", "each", "every", "both", "few", "many",
 ]);
 
-const FUNNY_RESPONSES = [
-  "I'm just a humble community bot, not a search engine 😂 Ask me about TechNexus instead!",
-  "Whoa, that's way above my pay grade 😅 I only know TechNexus stuff!",
-  "Nice try, but my brain only has TechNexus files installed 🧠 Try asking about our events or rules!",
-  "I appreciate the trust, but I'm basically a one-trick pony 🐴 TechNexus questions only!",
-  "Error 404: That knowledge not found in my TechNexus-only brain 😏 Wanna know about our community instead?",
-  "Asking me that is like asking a toaster to do your taxes 😂 Let's talk TechNexus!",
-  "I'd love to help, but my entire personality is TechNexus 🤷 Ask me something about the community!",
-  "Bold of you to assume I know things outside TechNexus 😎 Try asking about events or how to join!",
+const POLITE_REDIRECTS = [
+  "I might not be the best person for that 😊, but I can help you with TechNexus events, joining details, or community information!",
+  "That's an interesting question! I'm designed to help with TechNexus-related topics like events and meetups.",
+  "I don't have information on that, but feel free to ask about TechNexus activities or upcoming events!",
+  "I appreciate the curiosity! My expertise is all about TechNexus though — ask me about our community, rules, or events 😊",
+  "That's outside my area, but I'd love to help with anything TechNexus-related — events, joining, roles, and more!",
 ];
 
 export function searchKnowledge(query: string): string {
@@ -193,7 +190,7 @@ export function searchKnowledge(query: string): string {
   const topResults = scored.filter(s => s.score >= 3).slice(0, 2);
 
   if (topResults.length === 0) {
-    return FUNNY_RESPONSES[Math.floor(Math.random() * FUNNY_RESPONSES.length)];
+    return POLITE_REDIRECTS[Math.floor(Math.random() * POLITE_REDIRECTS.length)];
   }
 
   return topResults.map(r => r.entry.content).join(" ");
