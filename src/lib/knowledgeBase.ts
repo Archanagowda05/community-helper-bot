@@ -161,15 +161,31 @@ const STOP_WORDS = new Set([
 ]);
 
 const POLITE_REDIRECTS = [
-  "I might not be the best person for that 😊, but I can help you with TechNexus events, joining details, or community information!",
-  "That's an interesting question! I'm designed to help with TechNexus-related topics like events and meetups.",
-  "I don't have information on that, but feel free to ask about TechNexus activities or upcoming events!",
-  "I appreciate the curiosity! My expertise is all about TechNexus though — ask me about our community, rules, or events 😊",
-  "That's outside my area, but I'd love to help with anything TechNexus-related — events, joining, roles, and more!",
+  "That's a cool topic 😄 I'm here to help with TechNexus events and community info though! Anything you'd like to know?",
+  "Haha, I wish I knew more about that! 😊 But hey, want to hear about what's happening at TechNexus?",
+  "Great question! Not quite my thing though — I'm all about TechNexus. Ask me about events, roles, or how to join!",
+  "Hey, that sounds interesting! 😊 I'm best at TechNexus stuff though — events, community details, you name it!",
+  "Oh nice topic! I'm a TechNexus specialist though 😄 Want to know about our events or how to get involved?",
+];
+
+const GREETING_PATTERNS = /^(hi|hello|hey|yo|sup|hola|howdy|greetings|what'?s up|wassup|hii+|heyy+|broo*|okay+|ok|lol|lmao|haha|hmm+|yo+)\s*[!?.]*$/i;
+
+const GREETING_RESPONSES = [
+  "Hey! 👋 How can I help you with TechNexus today?",
+  "Hi there 😊 What would you like to know about TechNexus?",
+  "Hello! 👋 Got any questions about TechNexus? I'm here to help!",
+  "Hey hey! 😄 Ask me anything about TechNexus — events, roles, how to join, and more!",
 ];
 
 export function searchKnowledge(query: string): string {
-  const queryLower = query.toLowerCase();
+  const trimmed = query.trim();
+
+  // Handle greetings
+  if (GREETING_PATTERNS.test(trimmed)) {
+    return GREETING_RESPONSES[Math.floor(Math.random() * GREETING_RESPONSES.length)];
+  }
+
+  const queryLower = trimmed.toLowerCase();
   const queryWords = queryLower
     .split(/\s+/)
     .filter(w => w.length > 2 && !STOP_WORDS.has(w));
