@@ -24,9 +24,10 @@ const SUGGESTION_CHIPS = [
 
 interface ChatWindowProps {
   onClose: () => void;
+  className?: string;
 }
 
-const ChatWindow = ({ onClose }: ChatWindowProps) => {
+const ChatWindow = ({ onClose, className = "" }: ChatWindowProps) => {
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -108,7 +109,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   };
 
   return (
-    <div className="fixed bottom-24 right-5 w-[370px] max-w-[calc(100vw-2.5rem)] h-[520px] max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden chat-shadow animate-chat-slide-up flex flex-col bg-card border border-border z-50">
+    <div className={`fixed bottom-24 right-5 w-[370px] max-w-[calc(100vw-2.5rem)] h-[520px] max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden chat-shadow flex flex-col bg-card border border-border z-50 ${className}`}>
       {/* Header */}
       <div className="bg-chat-header px-5 py-4 flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-3">
