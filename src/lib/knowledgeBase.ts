@@ -160,6 +160,17 @@ const STOP_WORDS = new Set([
   "very", "more", "most", "other", "each", "every", "both", "few", "many",
 ]);
 
+const FUNNY_RESPONSES = [
+  "I'm just a humble community bot, not a search engine 😂 Ask me about TechNexus instead!",
+  "Whoa, that's way above my pay grade 😅 I only know TechNexus stuff!",
+  "Nice try, but my brain only has TechNexus files installed 🧠 Try asking about our events or rules!",
+  "I appreciate the trust, but I'm basically a one-trick pony 🐴 TechNexus questions only!",
+  "Error 404: That knowledge not found in my TechNexus-only brain 😏 Wanna know about our community instead?",
+  "Asking me that is like asking a toaster to do your taxes 😂 Let's talk TechNexus!",
+  "I'd love to help, but my entire personality is TechNexus 🤷 Ask me something about the community!",
+  "Bold of you to assume I know things outside TechNexus 😎 Try asking about events or how to join!",
+];
+
 export function searchKnowledge(query: string): string {
   const queryLower = query.toLowerCase();
   const queryWords = queryLower
@@ -182,7 +193,7 @@ export function searchKnowledge(query: string): string {
   const topResults = scored.filter(s => s.score >= 3).slice(0, 2);
 
   if (topResults.length === 0) {
-    return "I don't have that information in the TechNexus community knowledge base.";
+    return FUNNY_RESPONSES[Math.floor(Math.random() * FUNNY_RESPONSES.length)];
   }
 
   return topResults.map(r => r.entry.content).join(" ");
