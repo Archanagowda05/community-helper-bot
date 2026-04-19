@@ -1,11 +1,28 @@
 # TechNexus Community Overview
 
-TechNexus is a student-driven technology community focused on learning, collaboration, and innovation.
+TechNexus Community is a technology-focused meetup and professional learning network bringing together developers, engineers, students, AI practitioners, founders, and technology professionals. It bridges modern technology learning and real-world industry application.
 
-## Mission
+## Focus Areas
 
-The mission of TechNexus is to bridge the gap between academic learning and real-world technology skills by providing a platform for continuous learning and peer collaboration.
+Artificial Intelligence, Data and Analytics, Internet of Things (IoT), Cloud and Software Technologies, Digital Innovation and Industry Trends.
 
-## Who Can Join
+## How It Operates
 
-TechNexus is open to students, beginners, and technology enthusiasts interested in software development, artificial intelligence, data science, and emerging technologies.
+TechNexus runs as a hybrid community via physical in-person meetups, technology workshops, learning and skill-building events, and community networking sessions.
+
+## Who It's For
+
+Developers, engineers, AI enthusiasts, entrepreneurs, students, working professionals, technology founders and innovators.
+
+## Mission and Culture
+
+Open learning, innovation, professional growth, industry relevance, and collaboration over competition. Tagline: **"Collaborate. Innovate. Elevate."**
+
+## Leadership
+
+- **Vinodh Kumar** — Co-Founder, Community Lead
+- **Mohammed Azaruddin** — Co-Founder, Operations Lead
+
+## Community Reach
+
+TechNexus has 12,000 followers and is growing across multiple cities.
