@@ -158,12 +158,62 @@ const STOP_WORDS = new Set([
 ]);
 
 const POLITE_REDIRECTS = [
-  "That's a cool topic 😄 I'm here to help with TechNexus events and community info though! Anything you'd like to know?",
-  "Haha, I wish I knew more about that! 😊 But hey, want to hear about what's happening at TechNexus?",
-  "Great question! Not quite my thing though — I'm all about TechNexus. Ask me about events, joining, or our community!",
-  "Hey, that sounds interesting! 😊 I'm best at TechNexus stuff though — events, community details, you name it!",
-  "Oh nice topic! I'm a TechNexus specialist though 😄 Want to know about our events or how to get involved?",
+  "Haha 😄 I'd probably mess that up, but I can help you with TechNexus events and community info!",
+  "That's a fun question 😅 I'm more of a TechNexus specialist than anything else — ask me about events or joining!",
+  "I might not survive giving advice on that 😉 but I can help you with TechNexus updates!",
+  "Haha, I'd burn the biryani 🍳 but I'm great with TechNexus stuff — events, community, joining, you name it!",
+  "That's a cool topic 😄 Not quite my expertise though — want to hear what's happening at TechNexus?",
+  "Oh nice one! I'm a TechNexus specialist though 😊 Ask me about our events or how to get involved!",
 ];
+
+// ---------- Official TechNexus links ----------
+
+const LINKS = {
+  linkedin: "https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all",
+  meetup: "https://www.meetup.com/technexus-community/",
+  instagram: "https://www.instagram.com/technexus.community/",
+  youtube: "https://www.youtube.com/@TechNexus_Community",
+};
+
+const ALL_LINKS_BLOCK =
+  `Here's how to connect with TechNexus 🚀\n\n` +
+  `• LinkedIn: ${LINKS.linkedin}\n` +
+  `• Meetup: ${LINKS.meetup}\n` +
+  `• Instagram: ${LINKS.instagram}\n` +
+  `• YouTube: ${LINKS.youtube}\n\n` +
+  `Follow us, RSVP for events, and join the community!`;
+
+function detectLinkIntent(q: string): string | null {
+  const askLinkedIn = /\blinkedin\b/.test(q);
+  const askMeetup = /\bmeetup\b/.test(q);
+  const askInstagram = /\b(instagram|insta)\b/.test(q);
+  const askYoutube = /\b(youtube|yt)\b/.test(q);
+
+  const specificCount = [askLinkedIn, askMeetup, askInstagram, askYoutube].filter(Boolean).length;
+
+  if (specificCount === 1) {
+    if (askLinkedIn) return `Here's our LinkedIn 👉 ${LINKS.linkedin}`;
+    if (askMeetup) return `Here's our Meetup page 👉 ${LINKS.meetup}`;
+    if (askInstagram) return `Here's our Instagram 👉 ${LINKS.instagram}`;
+    if (askYoutube) return `Here's our YouTube channel 👉 ${LINKS.youtube}`;
+  }
+
+  if (specificCount > 1) {
+    const lines: string[] = ["Here you go 🚀"];
+    if (askLinkedIn) lines.push(`• LinkedIn: ${LINKS.linkedin}`);
+    if (askMeetup) lines.push(`• Meetup: ${LINKS.meetup}`);
+    if (askInstagram) lines.push(`• Instagram: ${LINKS.instagram}`);
+    if (askYoutube) lines.push(`• YouTube: ${LINKS.youtube}`);
+    return lines.join("\n");
+  }
+
+  const joinOrUpdates =
+    /\b(how (do|can) i join|how to join|join (the )?(community|technexus)|where (can|do) i (get|find) updates|get updates|stay updated|community links?|social links?|social media|where (can|do) i follow|follow technexus|all (your )?links?)\b/.test(q);
+
+  if (joinOrUpdates) return ALL_LINKS_BLOCK;
+
+  return null;
+}
 
 const GREETING_PATTERNS = /^(hi|hello|hey|yo|sup|hola|howdy|greetings|what'?s up|wassup|hii+|heyy+|broo*|okay+|ok|lol|lmao|haha|hmm+|yo+)\s*[!?.]*$/i;
 
@@ -266,7 +316,11 @@ export function searchKnowledge(query: string): string {
 
   const queryLower = trimmed.toLowerCase();
 
-  // 2. Event-intent routing (named events take priority)
+  // 2. Official links (joining, updates, social handles)
+  const linkAnswer = detectLinkIntent(queryLower);
+  if (linkAnswer) return linkAnswer;
+
+  // 3. Event-intent routing (named events take priority)
   const intent = detectEventIntent(queryLower);
   if (intent) {
     const eventAnswer = answerEventIntent(intent);
