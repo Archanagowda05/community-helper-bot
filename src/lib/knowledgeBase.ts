@@ -4,151 +4,147 @@ export interface KnowledgeEntry {
   keywords: string[];
 }
 
+// ---------- Named events (authoritative source) ----------
+
+interface NamedEvent {
+  name: string;
+  date: string;
+  venue: string;
+  city: string;
+  upcoming?: boolean;
+  // sortKey used to order past events (most recent first)
+  order: number;
+}
+
+// Order reflects chronological order in the knowledge base (higher = more recent).
+const NAMED_EVENTS: NamedEvent[] = [
+  { name: "Learn Azure Bot Services & Identity Access", date: "Dec 28, 2024", venue: "KARE", city: "Srivilliputhur", order: 1 },
+  { name: "AI in Action – Exploring Innovation at Microsoft", date: "Jan 3, 2025", venue: "Microsoft Reactor", city: "Bengaluru", order: 2 },
+  { name: "InnovateHer with Microsoft (Women-Only)", date: "Apr 10", venue: "Microsoft Ferns", city: "Bengaluru", order: 3 },
+  { name: "Microsoft Global AI Tour – Season of Agents", date: "May 17", venue: "Microsoft Ferns", city: "Bengaluru", order: 4 },
+  { name: "Global GenAI Bootcamp – Bengaluru", date: "Jul 5", venue: "Microsoft Ferns", city: "Bengaluru", order: 5 },
+  { name: "Microsoft AgentVerse – Bengaluru", date: "Aug 9", venue: "Microsoft Ferns", city: "Bengaluru", order: 6 },
+  { name: "Sprint to Imagine Cup – Chennai", date: "Oct 18", venue: "Microsoft Office", city: "Chennai", order: 7 },
+  { name: "Sprint to Imagine Cup – Bengaluru", date: "Nov 15", venue: "Microsoft Ferns", city: "Bengaluru", order: 8 },
+  { name: "Agentic AI Connect – Chennai", date: "Dec 20", venue: "Yuniq", city: "Chennai", order: 9 },
+  { name: "Agentic AI Connect – Bengaluru", date: "Jan 10", venue: "Microsoft Ferns", city: "Bengaluru", order: 10 },
+  { name: "Code & Cold Pizza – Bengaluru", date: "Feb 7", venue: "Polaris School of Technology", city: "Bengaluru", order: 11 },
+  { name: "GitHub Copilot Dev Day – Bengaluru", date: "Mar 14", venue: "Venue TBA", city: "Bengaluru", order: 12 },
+  { name: "NexusAI – Chennai", date: "Feb 28", venue: "Yuniq, Tidel BioPark", city: "Chennai", upcoming: true, order: 99 },
+];
+
+const UPCOMING_EVENT = NAMED_EVENTS.find(e => e.upcoming)!;
+const PAST_EVENTS = NAMED_EVENTS.filter(e => !e.upcoming).sort((a, b) => b.order - a.order);
+
+const formatEvent = (e: NamedEvent) => `${e.name} – ${e.date} – ${e.venue}, ${e.city}`;
+
+// ---------- Knowledge base entries (general info) ----------
+
 const knowledgeBase: KnowledgeEntry[] = [
   // Overview
   {
     section: "overview",
-    content: "TechNexus is a student-driven technology community focused on learning, collaboration, and innovation.",
-    keywords: ["community", "about", "overview", "what is", "technexus", "introduction", "welcome"],
+    content: "TechNexus Community is a technology-focused meetup and professional learning network bringing together developers, engineers, students, AI practitioners, founders, and technology professionals. Tagline: \"Collaborate. Innovate. Elevate.\"",
+    keywords: ["about", "overview", "what is", "technexus", "tell me about", "introduction", "community"],
   },
   {
     section: "overview",
-    content: "The mission of TechNexus is to bridge the gap between academic learning and real-world technology skills by providing a platform for continuous learning and peer collaboration.",
-    keywords: ["mission", "purpose", "goal", "vision", "academic", "skills"],
+    content: "TechNexus focuses on Artificial Intelligence, Data and Analytics, IoT, Cloud and Software Technologies, and Digital Innovation. It runs as a hybrid community via in-person meetups, workshops, learning events, and networking sessions.",
+    keywords: ["focus", "areas", "topics", "ai", "cloud", "data", "iot", "innovation"],
   },
   {
     section: "overview",
-    content: "TechNexus is open to students, beginners, and technology enthusiasts interested in software development, artificial intelligence, data science, and emerging technologies.",
-    keywords: ["join", "eligible", "students", "beginners", "open to", "members", "who can join"],
+    content: "TechNexus is led by two co-founders: Vinodh Kumar (Community Lead) and Mohammed Azaruddin (Operations Lead). The community has 12,000 followers across multiple cities.",
+    keywords: ["founder", "founders", "leadership", "vinodh", "azaruddin", "lead", "who runs", "who founded"],
   },
-  // Events
-  {
-    section: "events",
-    content: "TechNexus conducts weekly meetups every Sunday at 10 AM where members discuss technical topics, share learning resources, and review progress.",
-    keywords: ["meetup", "weekly", "sunday", "meeting", "event", "schedule"],
-  },
-  {
-    section: "events",
-    content: "A monthly hackathon is organized on the last Saturday of every month, encouraging members to build innovative projects in teams.",
-    keywords: ["hackathon", "monthly", "saturday", "projects", "teams", "competition"],
-  },
-  {
-    section: "events",
-    content: "Hands-on workshops and short bootcamps are conducted regularly on topics such as web development, AI, machine learning, and cloud computing.",
-    keywords: ["workshop", "bootcamp", "training", "web development", "ai", "machine learning", "cloud"],
-  },
-  {
-    section: "events",
-    content: "Industry professionals and experienced developers are invited to share insights and career guidance through guest speaker sessions.",
-    keywords: ["guest", "speaker", "industry", "career", "guidance", "session"],
-  },
-  // FAQ
+
+  // FAQ / Getting started / Joining
   {
     section: "faq",
-    content: "You can join TechNexus by registering through the official website or by accepting an invitation shared by a community member.",
-    keywords: ["join", "register", "sign up", "membership", "how to join", "invite"],
+    content: "TechNexus is open to everyone — students, early-career professionals, developers, AI/data/cloud enthusiasts, founders, and industry practitioners. There is no mandatory membership fee. To get started, join the official TechNexus WhatsApp group, follow event announcements, and RSVP for events you'd like to attend.",
+    keywords: ["join", "get started", "getting started", "start", "how to join", "sign up", "register", "begin", "onboard", "new member", "first steps", "membership", "fee", "cost", "free"],
   },
   {
     section: "faq",
-    content: "No, TechNexus is completely free to join. There is no membership fee.",
-    keywords: ["fee", "cost", "price", "free", "payment", "charge"],
+    content: "TechNexus offers Skill-Up programs and certification tracks for Microsoft Azure and AI, with guided curriculum, expert-led sessions, certification readiness, and eligibility-based discounted Microsoft certification vouchers.",
+    keywords: ["certification", "voucher", "skill", "learning", "azure", "training", "program", "track"],
   },
   {
     section: "faq",
-    content: "No prior experience is required. Beginners are welcome and encouraged to learn through community activities.",
-    keywords: ["experience", "beginner", "prerequisite", "requirement", "skill level", "new"],
+    content: "Event access categories: Open Events, RSVP-Based, Invitation-Based, Partner-Restricted, and Women-Only Events. Entry may require an event pass, WhatsApp confirmation, and venue verification.",
+    keywords: ["access", "category", "rsvp", "invitation", "women only", "partner", "entry", "attend"],
   },
   {
     section: "faq",
-    content: "Event updates are shared through the community website, email notifications, and official communication channels.",
-    keywords: ["updates", "notifications", "email", "announcements", "stay updated", "news"],
+    content: "Updates are shared via the TechNexus WhatsApp group (primary channel) and the Meetup platform (public listings and RSVPs).",
+    keywords: ["updates", "notifications", "announcements", "news", "whatsapp", "meetup", "stay updated", "channel"],
   },
-  // Roles
+
+  // Events — general (NOT event-history)
   {
-    section: "roles",
-    content: "Community Members participate in discussions, attend events, and collaborate on projects.",
-    keywords: ["member", "role", "participate", "default"],
-  },
-  {
-    section: "roles",
-    content: "Moderators ensure that community rules are followed and help maintain a positive and inclusive environment.",
-    keywords: ["moderator", "moderate", "enforce", "rules"],
+    section: "events",
+    content: "TechNexus events are hosted in Bengaluru, Chennai, Srivilliputhur, partner campuses, and online/hybrid platforms. Many flagship events are held at Microsoft venues such as Microsoft Ferns Bengaluru, Microsoft Reactor Bengaluru, and Microsoft Office Chennai.",
+    keywords: ["venue", "venues", "location", "locations", "where", "city", "cities", "microsoft ferns", "reactor", "yuniq"],
   },
   {
-    section: "roles",
-    content: "Organizers are responsible for planning events, managing schedules, and coordinating community activities.",
-    keywords: ["organizer", "organize", "planning", "events", "coordinate"],
+    section: "events",
+    content: "Event formats include Meetups, Developer Days, AI Conferences, Microsoft Partner Events, Bootcamps, Workshops, Certification Tracks, Student Innovation Days, and Women-in-Tech programs.",
+    keywords: ["format", "formats", "type", "types", "kind", "bootcamp", "workshop", "conference", "developer day"],
   },
   {
-    section: "roles",
-    content: "Mentors guide members by providing technical advice, project feedback, and career suggestions.",
-    keywords: ["mentor", "guide", "advice", "feedback", "career"],
-  },
-  // Moderation
-  {
-    section: "moderation",
-    content: "The TechNexus moderation team monitors discussions and activities to ensure a safe and respectful community environment.",
-    keywords: ["moderation", "safety", "monitor", "environment"],
+    section: "events",
+    content: "Major event series include Code & Cold Pizza, Agentic AI Connect, Microsoft Developer Day, GitHub Copilot Bootcamp, Global GenAI Bootcamp, Microsoft Global AI Tour, InnovateHer, Sprint to Imagine Cup, Microsoft AgentVerse, AI Innovation Days, and NexusAI.",
+    keywords: ["series", "flagship", "programs", "major events", "named events"],
   },
   {
-    section: "moderation",
-    content: "Members who violate community rules may receive warnings or face temporary or permanent removal depending on the severity.",
-    keywords: ["violation", "warning", "ban", "removal", "punishment", "strike"],
+    section: "events",
+    content: "TechNexus runs regular meetups across cities. Most events have controlled access requiring RSVP/registration, an event pass, and joining the official TechNexus WhatsApp group. High-demand events may require double verification and arriving 30 minutes early.",
+    keywords: ["meetup", "meetups", "regular", "registration", "verification", "pass"],
   },
-  {
-    section: "moderation",
-    content: "Any inappropriate behavior or concerns can be reported directly to moderators or organizers for review.",
-    keywords: ["report", "inappropriate", "concern", "complaint", "issue"],
-  },
-  // Rules
-  {
-    section: "rules",
-    content: "All members must maintain respectful and professional behavior while interacting within the TechNexus community.",
-    keywords: ["rules", "guidelines", "respect", "behavior", "professional"],
-  },
-  {
-    section: "rules",
-    content: "Posting irrelevant links, advertisements, or promotional content without permission is strictly prohibited.",
-    keywords: ["spam", "advertising", "promotion", "links", "prohibited"],
-  },
-  {
-    section: "rules",
-    content: "Members are encouraged to collaborate, help others, and give proper credit for shared work or ideas.",
-    keywords: ["collaborate", "credit", "sharing", "ethics", "teamwork"],
-  },
-  {
-    section: "rules",
-    content: "Harassment, discrimination, or abusive language of any form is not tolerated in the TechNexus community.",
-    keywords: ["harassment", "discrimination", "abuse", "hate", "conduct"],
-  },
+
   // History
   {
     section: "history",
-    content: "TechNexus was founded by a group of passionate students aiming to create a collaborative technology learning environment.",
-    keywords: ["history", "founded", "origin", "started", "beginning", "created"],
+    content: "TechNexus was founded to build a practical, industry-connected technology learning ecosystem in India — bridging academic knowledge, industry needs, and real-world implementation. It began as a local meetup and grew into a multi-city, Microsoft-aligned innovation network.",
+    keywords: ["history", "founded", "origin", "started", "beginning", "evolution", "growth", "expansion"],
   },
   {
     section: "history",
-    content: "The community grew through word-of-mouth, consistent events, and peer-driven learning initiatives.",
-    keywords: ["growth", "grew", "expand", "word of mouth"],
+    content: "TechNexus expanded into Bengaluru, Chennai, and Srivilliputhur, partnered with Microsoft MVPs, cloud experts, and industry leaders, and developed verticals across AI meetups, Microsoft ecosystem events, developer bootcamps, student innovation programs, women-in-tech initiatives, and enterprise AI sessions.",
+    keywords: ["multi-city", "partners", "verticals", "milestones", "achievements"],
+  },
+
+  // Rules
+  {
+    section: "rules",
+    content: "Core principles: respectful communication, professional conduct, ethical innovation, inclusive participation, and a safe learning environment across all events, sessions, and WhatsApp groups.",
+    keywords: ["rules", "guidelines", "principles", "conduct", "behavior", "respect", "professional"],
   },
   {
-    section: "history",
-    content: "Key milestones include hosting the first hackathon, organizing industry-led workshops, and reaching a growing member base across multiple institutions.",
-    keywords: ["milestones", "achievements", "hackathon", "workshops", "institutions"],
-  },
-  // Getting Started
-  {
-    section: "getting_started",
-    content: "To get started, register through the official TechNexus website or accept an invitation. Membership is free. Introduce yourself in the welcome channel and explore available resources.",
-    keywords: ["getting started", "start", "begin", "onboard", "new member", "first steps", "how to start"],
+    section: "rules",
+    content: "Prohibited behavior includes spam, unrelated promotions, fake or misleading information, disrespectful conduct (harassment, discrimination, offensive language), and event disruption. Using the community for personal monetary or social-media gains is not allowed.",
+    keywords: ["prohibited", "spam", "promotion", "harassment", "discrimination", "disruption", "not allowed"],
   },
   {
-    section: "getting_started",
-    content: "Attend your first weekly meetup on Sunday at 10 AM, join a project or study group, and start asking questions in discussion channels.",
-    keywords: ["first event", "meetup", "study group", "project", "contribute", "participate"],
+    section: "rules",
+    content: "WhatsApp groups are moderated and event-focused. Allowed: event updates, official announcements, session materials, relevant tech discussions. Not allowed: viral forwards, political/religious debates, personal ads, non-tech content.",
+    keywords: ["whatsapp", "group", "policy", "messages", "forward"],
+  },
+
+  // Moderation
+  {
+    section: "moderation",
+    content: "Moderators maintain safety and discipline across WhatsApp groups and events — they can delete messages, mute users, remove members, and ban repeat offenders. Zero-tolerance violations include harassment, hate speech, fraud, fake voucher distribution, impersonation, plagiarism, and bullying.",
+    keywords: ["moderation", "moderator", "ban", "warning", "removal", "violation", "report", "complaint"],
+  },
+  {
+    section: "moderation",
+    content: "Enforcement follows: Prevention → Warning → Removal → Ban. Priorities are community safety, inclusivity, a professional learning environment, and brand integrity.",
+    keywords: ["enforcement", "philosophy", "discipline"],
   },
 ];
+
+// ---------- Conversational helpers ----------
 
 const STOP_WORDS = new Set([
   "the", "is", "are", "was", "were", "what", "who", "how", "why", "when",
@@ -158,12 +154,13 @@ const STOP_WORDS = new Set([
   "you", "your", "they", "their", "our", "its", "also", "than", "then",
   "tell", "show", "give", "know", "like", "just", "some", "any", "all",
   "very", "more", "most", "other", "each", "every", "both", "few", "many",
+  "me", "us", "do",
 ]);
 
 const POLITE_REDIRECTS = [
   "That's a cool topic 😄 I'm here to help with TechNexus events and community info though! Anything you'd like to know?",
   "Haha, I wish I knew more about that! 😊 But hey, want to hear about what's happening at TechNexus?",
-  "Great question! Not quite my thing though — I'm all about TechNexus. Ask me about events, roles, or how to join!",
+  "Great question! Not quite my thing though — I'm all about TechNexus. Ask me about events, joining, or our community!",
   "Hey, that sounds interesting! 😊 I'm best at TechNexus stuff though — events, community details, you name it!",
   "Oh nice topic! I'm a TechNexus specialist though 😄 Want to know about our events or how to get involved?",
 ];
@@ -174,18 +171,109 @@ const GREETING_RESPONSES = [
   "Hey! 👋 How can I help you with TechNexus today?",
   "Hi there 😊 What would you like to know about TechNexus?",
   "Hello! 👋 Got any questions about TechNexus? I'm here to help!",
-  "Hey hey! 😄 Ask me anything about TechNexus — events, roles, how to join, and more!",
+  "Hey hey! 😄 Ask me anything about TechNexus — events, how to join, and more!",
 ];
+
+// ---------- Event-intent routing ----------
+
+interface EventIntent {
+  upcoming: boolean;
+  past: boolean;
+  recent: boolean;
+  meetupsOnly: boolean;
+  city?: string;
+}
+
+function detectEventIntent(q: string): EventIntent | null {
+  const isEventQuery = /\b(event|events|hackathon|conference|bootcamp|meetup|meetups|workshop|session)\b/.test(q);
+
+  const upcoming = /\b(upcoming|next|future|coming up|scheduled)\b/.test(q);
+  const past = /\b(past|previous|last|recent|earlier|completed|history of events|happened|been)\b/.test(q);
+  const recent = /\b(recent|latest|last|previous)\b/.test(q);
+
+  // Explicit "do you have meetups?" — only then talk about regular meetups
+  const meetupsOnly = /\bdo you (have|hold|run|conduct)\b.*\bmeetups?\b/.test(q) ||
+                      /^are there (any )?meetups?\b/.test(q);
+
+  let city: string | undefined;
+  if (/\bbengaluru|bangalore\b/.test(q)) city = "Bengaluru";
+  else if (/\bchennai\b/.test(q)) city = "Chennai";
+  else if (/\bsrivilliputhur\b/.test(q)) city = "Srivilliputhur";
+
+  if (!isEventQuery && !upcoming && !past && !city && !meetupsOnly) return null;
+
+  return { upcoming, past, recent, meetupsOnly, city };
+}
+
+function answerEventIntent(intent: EventIntent): string | null {
+  // Explicit meetup question
+  if (intent.meetupsOnly) {
+    return "Yes — TechNexus runs regular meetups across Bengaluru, Chennai, and Srivilliputhur, plus online/hybrid sessions. Most require RSVP and joining the official TechNexus WhatsApp group.";
+  }
+
+  // Upcoming events → ONLY the upcoming entry
+  if (intent.upcoming && !intent.past) {
+    return `📅 Upcoming Event: **${formatEvent(UPCOMING_EVENT)}**.`;
+  }
+
+  // City-specific event question
+  if (intent.city) {
+    const cityEvents = NAMED_EVENTS.filter(e => e.city === intent.city);
+    if (cityEvents.length > 0) {
+      const upcomingInCity = cityEvents.filter(e => e.upcoming);
+      const pastInCity = cityEvents.filter(e => !e.upcoming).sort((a, b) => b.order - a.order);
+
+      if (intent.upcoming) {
+        return upcomingInCity.length
+          ? `Upcoming in ${intent.city}: ${upcomingInCity.map(formatEvent).join("; ")}.`
+          : `No upcoming events listed for ${intent.city} right now. The next confirmed event is **${formatEvent(UPCOMING_EVENT)}**.`;
+      }
+
+      const lines = [
+        ...(upcomingInCity.length ? [`Upcoming: ${upcomingInCity.map(formatEvent).join("; ")}`] : []),
+        `Past events in ${intent.city}:`,
+        ...pastInCity.slice(0, 6).map(e => `• ${formatEvent(e)}`),
+      ];
+      return lines.join("\n");
+    }
+  }
+
+  // Recent / last / previous → most recent past named event
+  if (intent.recent && intent.past) {
+    const last = PAST_EVENTS[0];
+    return `The most recent completed TechNexus event was **${formatEvent(last)}**.`;
+  }
+
+  // Past events generally → list named past events
+  if (intent.past) {
+    const lines = ["Recent past TechNexus events:", ...PAST_EVENTS.slice(0, 6).map(e => `• ${formatEvent(e)}`)];
+    return lines.join("\n");
+  }
+
+  // Generic "events" → brief overview + upcoming pointer
+  return null; // fall through to keyword search
+}
+
+// ---------- Main entry ----------
 
 export function searchKnowledge(query: string): string {
   const trimmed = query.trim();
 
-  // Handle greetings
+  // 1. Greetings
   if (GREETING_PATTERNS.test(trimmed)) {
     return GREETING_RESPONSES[Math.floor(Math.random() * GREETING_RESPONSES.length)];
   }
 
   const queryLower = trimmed.toLowerCase();
+
+  // 2. Event-intent routing (named events take priority)
+  const intent = detectEventIntent(queryLower);
+  if (intent) {
+    const eventAnswer = answerEventIntent(intent);
+    if (eventAnswer) return eventAnswer;
+  }
+
+  // 3. Keyword scoring
   const queryWords = queryLower
     .split(/\s+/)
     .filter(w => w.length > 2 && !STOP_WORDS.has(w));

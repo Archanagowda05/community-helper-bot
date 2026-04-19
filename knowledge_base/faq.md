@@ -1,17 +1,29 @@
 # TechNexus FAQ
 
-## How can I join TechNexus?
+## Is TechNexus open to everyone?
 
-You can join TechNexus by registering through the official website or by accepting an invitation shared by a community member.
+Yes. TechNexus is an open participation technology ecosystem with no mandatory membership fee. Students, early-career professionals, developers, AI/data/cloud enthusiasts, founders, and industry practitioners can all participate (subject to event-specific policies).
 
-## Is there any membership fee?
+## How do I join or get started?
 
-No, TechNexus is completely free to join.
+Join the official TechNexus WhatsApp group (the primary operational channel), follow event announcements, RSVP for events you want to attend, and participate in workshops, bootcamps, or networking sessions.
 
-## Do I need prior technical experience?
+## How do I attend an event?
 
-No prior experience is required. Beginners are welcome and encouraged to learn through community activities.
+Registration may require RSVP, approval, or invitation depending on the event. For controlled-access events you'll need an event pass, WhatsApp confirmation, and venue verification. Some events also require arriving 30 minutes before start time.
 
-## How do I stay updated about events?
+## What types of events are run?
 
-Event updates are shared through the community website, email notifications, and official communication channels.
+Meetups, workshops, bootcamps, conferences, certification tracks, women-only events, and innovation programs.
+
+## What learning programs are offered?
+
+Skill-Up programs and certification tracks for Microsoft Azure and AI, with guided curriculum, expert sessions, certification readiness, and eligibility-based discounted Microsoft certification vouchers.
+
+## What event access categories exist?
+
+Open Events, RSVP-Based Events, Invitation-Based Events, Partner-Restricted Events, and Women-Only Events.
+
+## Where do I get updates?
+
+Primary: TechNexus WhatsApp groups. Secondary: Meetup platform for public listings and RSVPs.
