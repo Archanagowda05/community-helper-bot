@@ -316,7 +316,11 @@ export function searchKnowledge(query: string): string {
 
   const queryLower = trimmed.toLowerCase();
 
-  // 2. Event-intent routing (named events take priority)
+  // 2. Official links (joining, updates, social handles)
+  const linkAnswer = detectLinkIntent(queryLower);
+  if (linkAnswer) return linkAnswer;
+
+  // 3. Event-intent routing (named events take priority)
   const intent = detectEventIntent(queryLower);
   if (intent) {
     const eventAnswer = answerEventIntent(intent);
