@@ -108,8 +108,9 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html, body, #root {
+    background: transparent !important;
+    @apply text-foreground;
     font-family: var(--font-body);
   }
 
