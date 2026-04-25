@@ -11,6 +11,31 @@ interface ChatMessageProps {
   message: Message;
 }
 
+// Match http(s) URLs; stop at whitespace or trailing punctuation
+const URL_REGEX = /(https?:\/\/[^\s<>()]+[^\s<>().,;:!?'"])/g;
+
+const renderWithLinks = (text: string, isBot: boolean) => {
+  const parts = text.split(URL_REGEX);
+  return parts.map((part, idx) => {
+    if (part.match(/^https?:\/\//)) {
+      return (
+        <a
+          key={idx}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`underline underline-offset-2 break-all ${
+            isBot ? "text-primary hover:opacity-80" : "hover:opacity-80"
+          }`}
+        >
+          {part}
+        </a>
+      );
+    }
+    return <span key={idx}>{part}</span>;
+  });
+};
+
 const ChatMessage = ({ message }: ChatMessageProps) => {
   const isBot = message.role === "bot";
 
@@ -24,15 +49,15 @@ const ChatMessage = ({ message }: ChatMessageProps) => {
         </div>
       )}
       <div
-        className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+        className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed break-words ${
           isBot
             ? "bg-chat-bubble-bot text-chat-bubble-bot-foreground rounded-tl-md"
             : "bg-chat-bubble-user text-chat-bubble-user-foreground rounded-tr-md"
         }`}
       >
-        {message.content.split("\n\n").map((paragraph, i) => (
-          <p key={i} className={i > 0 ? "mt-2" : ""}>
-            {paragraph}
+        {message.content.split("\n").map((line, i) => (
+          <p key={i} className={i > 0 ? "mt-1" : ""}>
+            {renderWithLinks(line, isBot)}
           </p>
         ))}
       </div>
