@@ -17,11 +17,6 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-<<<<<<< HEAD
-KNOWLEDGE_DIR = "knowledge_base"
-INDEX_FILE = "kb_index.faiss"
-METADATA_FILE = "kb_metadata.json"
-=======
 # Resolve paths relative to this script's location so the script works
 # regardless of the current working directory.
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -31,18 +26,12 @@ KNOWLEDGE_DIR = os.path.join(_REPO_ROOT, "knowledge_base")
 INDEX_FILE = os.path.join(_SCRIPT_DIR, "kb_index.faiss")
 METADATA_FILE = os.path.join(_SCRIPT_DIR, "kb_metadata.json")
 
->>>>>>> 49a2026 (fixed issues)
 CHUNK_SIZE = 500  # characters per chunk
 CHUNK_OVERLAP = 50
 MODEL_NAME = "all-MiniLM-L6-v2"
 
-<<<<<<< HEAD
-
-def load_md_files(directory: str) -> list[dict]:
-=======
 from typing import List
 def load_md_files(directory: str) -> List[dict]:
->>>>>>> 49a2026 (fixed issues)
     """Load all .md files and return list of {section, content}."""
     documents = []
     for filename in sorted(os.listdir(directory)):
@@ -56,7 +45,7 @@ def load_md_files(directory: str) -> List[dict]:
     return documents
 
 
-def chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
+def chunk_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> List[str]:
     """Split text into overlapping chunks by character count."""
     chunks = []
     # Split by double newlines first (paragraphs), then combine
