@@ -12,6 +12,8 @@ interface NamedEvent {
   venue: string;
   city: string;
   upcoming?: boolean;
+  time?: string;
+  description?: string;
   // sortKey used to order past events (most recent first)
   order: number;
 }
@@ -32,13 +34,33 @@ const NAMED_EVENTS: NamedEvent[] = [
   { name: "AI Native Meetup – Chennai", date: "Feb 28, 2026", venue: "Yuniq, Ticel BioPark", city: "Chennai", order: 12 },
   { name: "GitHub Copilot Dev Day – Bengaluru", date: "Mar 14, 2026", venue: "Microsoft Reactor", city: "Bengaluru", order: 13 },
   { name: "GitHub Copilot Dev Day – Chennai", date: "Mar 28, 2026", venue: "NIQ Chennai", city: "Chennai", order: 14 },
-  { name: "Dev Conclave Bengaluru", date: "May 16, 2026", venue: "Bengaluru (9 AM – 3 PM)", city: "Bengaluru", upcoming: true, order: 99 },
+  {
+    name: "Dev Conclave Bengaluru",
+    date: "May 16, 2026",
+    venue: "Bengaluru",
+    city: "Bengaluru",
+    time: "9:00 AM – 3:00 PM",
+    description: "An exclusive developer gathering focused on networking, collaboration, and innovation among developers. The event includes sessions, discussions, and community interaction.",
+    upcoming: true,
+    order: 99,
+  },
 ];
 
 const UPCOMING_EVENT = NAMED_EVENTS.find(e => e.upcoming)!;
 const PAST_EVENTS = NAMED_EVENTS.filter(e => !e.upcoming).sort((a, b) => b.order - a.order);
 
 const formatEvent = (e: NamedEvent) => `${e.name} – ${e.date} – ${e.venue}, ${e.city}`;
+
+const formatEventDetailed = (e: NamedEvent) => {
+  const lines = [
+    `📅 **${e.name}**`,
+    `• Date: ${e.date}`,
+    `• Location: ${e.venue}${e.venue !== e.city ? `, ${e.city}` : ""}`,
+  ];
+  if (e.time) lines.push(`• Time: ${e.time}`);
+  if (e.description) lines.push("", e.description);
+  return lines.join("\n");
+};
 
 // ---------- Knowledge base entries (general info) ----------
 
@@ -265,7 +287,7 @@ function answerEventIntent(intent: EventIntent): string | null {
 
   // Upcoming events → ONLY the upcoming entry
   if (intent.upcoming && !intent.past) {
-    return `📅 Upcoming Event: **${formatEvent(UPCOMING_EVENT)}**.`;
+    return `Upcoming Event:\n\n${formatEventDetailed(UPCOMING_EVENT)}`;
   }
 
   // City-specific event question
