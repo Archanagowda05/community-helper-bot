@@ -82,7 +82,12 @@ const ChatWindow = ({ onClose, className = "" }: ChatWindowProps) => {
       setIsTyping(false);
       setMessages((prev) => [...prev, botMsg]);
       setShowChips(true);
+<<<<<<< HEAD
     } catch {
+=======
+    } catch (err) {
+      console.error("[ChatBot] Backend unreachable, using local fallback:", err);
+>>>>>>> 49a2026 (fixed issues)
       const { searchKnowledge } = await import("@/lib/knowledgeBase");
       const answer = searchKnowledge(text);
       const botMsg: Message = {

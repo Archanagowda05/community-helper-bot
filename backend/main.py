@@ -20,6 +20,23 @@ Usage:
 """
 
 import os
+
+# Load .env automatically so MISTRAL_API_KEY works without manual export.
+try:
+    from dotenv import load_dotenv as _load_dotenv
+    _script_dir = os.path.dirname(os.path.abspath(__file__))
+    _env_candidates = [
+        os.path.join(_script_dir, ".env"),
+        os.path.join(os.path.dirname(_script_dir), ".env"),
+    ]
+    for _ep in _env_candidates:
+        if os.path.exists(_ep):
+            _load_dotenv(_ep)
+            print(f"Loaded .env from {_ep}")
+            break
+except ImportError:
+    pass  # python-dotenv not installed; rely on shell environment
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -44,8 +61,17 @@ RULES:
 5. NEVER repeat the same fallback or redirection sentence twice in a row.
 6. Do not mention "context", "knowledge base", or "documents" — answer naturally.
 7. The user should NEVER feel ignored or rejected.
+<<<<<<< HEAD
 8. EVENT QUESTIONS: When the user asks about the "upcoming", "next", or "future" event, return the FULL details from the "Upcoming Event" section in the context — including event name, date, location, time, and description. Use bullet points and never shorten this answer to a single line.
 9. Always treat the event listed under "Upcoming Event" in the context as the single source of truth for the next event. Never substitute a past event for the upcoming one.
+=======
+8. UPCOMING EVENT RULE (CRITICAL):
+   - When the user asks about the "upcoming", "next", "future", or "latest" event, you MUST look for the section explicitly labelled "Upcoming Event" in the context below.
+   - Return its FULL details: event name, date, location, time, and description. Use bullet points.
+   - The "Upcoming Event" section is ALWAYS the correct answer — do NOT use any event listed under "Previous Events" or "Other Past Events" or "Major Event Series" as the upcoming event.
+   - If you see events like "NexusAI Chennai", "AI Native Meetup", "GitHub Copilot Dev Day", or similar in the context — those are PAST events. Never present them as the next upcoming event.
+   - The upcoming event is whichever event appears under the "## Upcoming Event" heading in the context. Trust that heading above all else.
+>>>>>>> 49a2026 (fixed issues)
 
 Context:
 {context}"""

@@ -7,6 +7,8 @@ Usage:
 
 This script reads all .md files from the knowledge_base/ directory,
 splits them into chunks, generates embeddings, and saves a FAISS index + metadata.
+
+Run from the repo root OR from the backend/ directory — paths are resolved automatically.
 """
 
 import os
@@ -15,15 +17,32 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
+<<<<<<< HEAD
 KNOWLEDGE_DIR = "knowledge_base"
 INDEX_FILE = "kb_index.faiss"
 METADATA_FILE = "kb_metadata.json"
+=======
+# Resolve paths relative to this script's location so the script works
+# regardless of the current working directory.
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
+
+KNOWLEDGE_DIR = os.path.join(_REPO_ROOT, "knowledge_base")
+INDEX_FILE = os.path.join(_SCRIPT_DIR, "kb_index.faiss")
+METADATA_FILE = os.path.join(_SCRIPT_DIR, "kb_metadata.json")
+
+>>>>>>> 49a2026 (fixed issues)
 CHUNK_SIZE = 500  # characters per chunk
 CHUNK_OVERLAP = 50
 MODEL_NAME = "all-MiniLM-L6-v2"
 
+<<<<<<< HEAD
 
 def load_md_files(directory: str) -> list[dict]:
+=======
+from typing import List
+def load_md_files(directory: str) -> List[dict]:
+>>>>>>> 49a2026 (fixed issues)
     """Load all .md files and return list of {section, content}."""
     documents = []
     for filename in sorted(os.listdir(directory)):
