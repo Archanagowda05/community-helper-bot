@@ -29,8 +29,10 @@ const NAMED_EVENTS: NamedEvent[] = [
   { name: "Agentic AI Connect – Chennai", date: "Dec 20", venue: "Yuniq", city: "Chennai", order: 9 },
   { name: "Agentic AI Connect – Bengaluru", date: "Jan 10", venue: "Microsoft Ferns", city: "Bengaluru", order: 10 },
   { name: "Code & Cold Pizza – Bengaluru", date: "Feb 7", venue: "Polaris School of Technology", city: "Bengaluru", order: 11 },
-  { name: "GitHub Copilot Dev Day – Bengaluru", date: "Mar 14", venue: "Venue TBA", city: "Bengaluru", order: 12 },
-  { name: "NexusAI – Chennai", date: "Feb 28", venue: "Yuniq, Tidel BioPark", city: "Chennai", upcoming: true, order: 99 },
+  { name: "AI Native Meetup – Chennai", date: "Feb 28, 2026", venue: "Yuniq, Ticel BioPark", city: "Chennai", order: 12 },
+  { name: "GitHub Copilot Dev Day – Bengaluru", date: "Mar 14, 2026", venue: "Microsoft Reactor", city: "Bengaluru", order: 13 },
+  { name: "GitHub Copilot Dev Day – Chennai", date: "Mar 28, 2026", venue: "NIQ Chennai", city: "Chennai", order: 14 },
+  { name: "Dev Conclave Bengaluru", date: "May 16, 2026", venue: "Bengaluru (9 AM – 3 PM)", city: "Bengaluru", upcoming: true, order: 99 },
 ];
 
 const UPCOMING_EVENT = NAMED_EVENTS.find(e => e.upcoming)!;
