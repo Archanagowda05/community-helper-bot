@@ -25,6 +25,28 @@ _UPCOMING_KEYWORDS = {
     "what event", "any event", "nearest", "scheduled",
 }
 
+# Keywords that indicate the user is asking about PAST / ALL events
+_PAST_EVENT_KEYWORDS = {
+    "past", "previous", "all events", "list all", "history", "hosted",
+    "happened", "held", "2024", "2025", "2026", "completed", "done",
+    "old events", "prior", "last event", "earlier",
+}
+
+# Chunk text snippets that belong to the "Previous Events" section
+_PAST_EVENT_MARKERS = [
+    "Previous Events",
+    "GitHub Copilot Dev Day",
+    "Agentic AI Connect",
+    "Sprint to Imagine Cup",
+    "AgentVerse",
+    "GenAI Bootcamp",
+    "InnovateHer",
+    "AI in Action",
+    "Learn Azure",
+    "Code & Cold Pizza",
+    "AI Native Meetup",
+]
+
 # Global state (loaded once)
 _index = None
 _metadata = None
@@ -51,10 +73,17 @@ def load_kb():
     _model = SentenceTransformer(MODEL_NAME)
     print(f"Knowledge base loaded: {_index.ntotal} vectors.")
 
+
 def _is_upcoming_query(query: str) -> bool:
     """Return True if the query is asking about the next/upcoming event."""
     q = query.lower()
     return any(kw in q for kw in _UPCOMING_KEYWORDS) and "event" in q
+
+
+def _is_past_events_query(query: str) -> bool:
+    """Return True if the query is asking about past or all events."""
+    q = query.lower()
+    return any(kw in q for kw in _PAST_EVENT_KEYWORDS) and "event" in q
 
 
 def _get_upcoming_event_chunk():
@@ -70,8 +99,27 @@ def _get_upcoming_event_chunk():
     return None
 
 
-def search(query: str, top_k: int = 3) -> list:
+def _get_past_event_chunks():
+    """
+    Return all chunks from events.md that contain past event data.
+    The full list is spread across multiple chunks due to chunking, so
+    we collect all of them to give the LLM the complete picture.
+    """
+    if _metadata is None:
+        return []
+    chunks = []
+    seen_texts = set()
+    for entry in _metadata:
+        if entry.get("section") != "events":
+            continue
+        text = entry.get("text", "")
+        if any(marker in text for marker in _PAST_EVENT_MARKERS) and text not in seen_texts:
+            chunks.append(entry)
+            seen_texts.add(text)
+    return chunks
 
+
+def search(query: str, top_k: int = 3) -> list:
     """
     Search the knowledge base for the most relevant chunks.
 
@@ -106,13 +154,13 @@ def get_context(query: str, top_k: int = 3, min_score: float = 0.15) -> str:
     """
     Get formatted context string for the LLM prompt.
 
-    For queries about the next/upcoming event, the chunk containing
-    'Upcoming Event' from events.md is always injected first so the
-    LLM never confuses a past event for the upcoming one.
+    - For upcoming event queries: pins the 'Upcoming Event' chunk first.
+    - For past/all event queries: injects ALL past event chunks so the
+      LLM always sees the complete list, not just 3 random chunks.
 
     Args:
         query: The user's question.
-        top_k: Max number of chunks to include.
+        top_k: Max number of chunks to include (auto-increased for event lists).
         min_score: Minimum similarity score to include a chunk.
 
     Returns:
@@ -120,21 +168,36 @@ def get_context(query: str, top_k: int = 3, min_score: float = 0.15) -> str:
     """
     load_kb()
 
+    # Past events queries need more chunks — the list spans 5+ chunks
+    if _is_past_events_query(query):
+        top_k = max(top_k, 10)
+
     results = search(query, top_k=top_k)
     relevant = [r for r in results if r["score"] >= min_score]
 
-    # For upcoming-event queries, guarantee the correct chunk is present
-    # and ranked first — this prevents stale or lower-ranked chunks from
-    # misleading the LLM.
+    # --- Upcoming event: pin the correct chunk at the top ---
     if _is_upcoming_query(query):
         upcoming_chunk = _get_upcoming_event_chunk()
         if upcoming_chunk:
-            # Remove it from results if already there (avoid duplicate)
             relevant = [r for r in relevant if r.get("text") != upcoming_chunk.get("text")]
-            # Pin it at the top with a high synthetic score
             pinned = upcoming_chunk.copy()
             pinned["score"] = 1.0
             relevant = [pinned] + relevant
+
+    # --- Past / all events: inject every past-event chunk ---
+    elif _is_past_events_query(query):
+        past_chunks = _get_past_event_chunks()
+        if past_chunks:
+            existing_texts = {r.get("text") for r in relevant}
+            # Prepend any past-event chunks not already in results
+            injected = []
+            for chunk in past_chunks:
+                if chunk.get("text") not in existing_texts:
+                    pinned = chunk.copy()
+                    pinned["score"] = 1.0
+                    injected.append(pinned)
+                    existing_texts.add(chunk.get("text"))
+            relevant = injected + relevant
 
     if not relevant:
         return ""

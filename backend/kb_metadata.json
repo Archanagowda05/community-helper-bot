@@ -1,79 +1,111 @@
 [
   {
     "section": "events",
-    "text": "# TechNexus Events\n\nTechNexus Community organizes a continuous calendar of technology-focused events including meetups, workshops, bootcamps, and conferences. These events are designed for learning, networking, innovation, and collaboration across the tech community.\n\nEvents are conducted in Bengaluru, Chennai, Srivilliputhur, partner campuses, and online/hybrid platforms.\n\n---\n\n## Upcoming Event"
+    "text": "# TechNexus Events\n\nTechNexus Community organizes a continuous calendar of technology-focused events including meetups, workshops, bootcamps, and conferences. These events are designed for learning, networking, innovation, and collaboration across the tech community.\n\nEvents are conducted in Bengaluru, Chennai, Srivilliputhur, partner campuses, and online/hybrid platforms.\n\n**RSVP for all events:** https://www.meetup.com/technexus-community/\n\n---\n\n## Upcoming Event"
   },
   {
     "section": "events",
-    "text": "d online/hybrid platforms.\n\n---\n\n## Upcoming Event\n\n### Dev Conclave Bengaluru\n- **Date:** May 16, 2026  \n- **Location:** Bengaluru  \n- **Time:** 9:00 AM – 3:00 PM  \n- **Description:**  \n  An exclusive developer gathering focused on networking, collaboration, and innovation among developers. The event includes sessions, discussions, and community interaction.\n\n---\n\n## Previous Events"
+    "text": "p.com/technexus-community/\n\n---\n\n## Upcoming Event\n\n### Dev Conclave Bengaluru\n- **Date:** May 16, 2026\n- **Location:** Bengaluru\n- **Time:** 9:00 AM – 3:00 PM\n- **Description:** An exclusive developer gathering focused on networking, collaboration, and innovation among developers. The event includes sessions, discussions, and community interaction.\n- **RSVP:** https://www.meetup.com/technexus-community/\n\n---\n\n## Previous Events"
   },
   {
     "section": "events",
-    "text": "nd community interaction.\n\n---\n\n## Previous Events\n\n### GitHub Copilot Dev Day – Chennai\n- **Description:**  \n  A full-day developer event in Chennai exploring GitHub Copilot, MCP, and AI-powered development workflows.\n- **Location:** Chennai  \n- **Participants:** 100+\n\n---"
+    "text": ".com/technexus-community/\n\n---\n\n## Previous Events\n\nHere is the complete list of all past TechNexus events in reverse chronological order:\n\n### 2026\n\n1. **GitHub Copilot Dev Day – Chennai** — March 28, 2026 — NIQ Chennai\n   - A full-day developer event exploring GitHub Copilot, MCP, and AI-powered development workflows. 100+ participants."
   },
   {
     "section": "events",
-    "text": "ocation:** Chennai  \n- **Participants:** 100+\n\n---\n\n### GitHub Copilot Dev Day – Bengaluru\n- **Date:** March 14, 2026  \n- **Description:**  \n  An immersive hands-on experience with GitHub Copilot and AI-powered development tools featuring sessions on modern workflows and productivity.\n- **Location:** Bengaluru  \n- **Participants:** 100+\n\n---"
+    "text": "-powered development workflows. 100+ participants.\n\n2. **GitHub Copilot Dev Day – Bengaluru** — March 14, 2026 — Microsoft Reactor, Bengaluru\n   - Immersive hands-on experience with GitHub Copilot and AI-powered development tools. 100+ participants.\n\n3. **AI Native Meetup – Chennai** — February 28, 2026 — Yuniq, Ticel BioPark, Chennai\n   - Premier gathering of AI enthusiasts exploring AI-native development, agentic workflows, and real-world applications. 80+ participants."
   },
   {
     "section": "events",
-    "text": "ation:** Bengaluru  \n- **Participants:** 100+\n\n---\n\n### AI Native Meetup – Chennai\n- **Date:** February 28, 2026  \n- **Description:**  \n  A premier gathering of AI enthusiasts and practitioners exploring AI-native development, agentic workflows, and real-world applications.\n- **Location:** Chennai  \n- **Participants:** 80+\n\n---\n\n## Other Past Events"
+    "text": "ws, and real-world applications. 80+ participants.\n\n4. **Code & Cold Pizza – Bengaluru** — February 7, 2026 — Polaris School of Technology, Bengaluru\n\n5. **Agentic AI Connect – Bengaluru** — January 10, 2026 — Microsoft Ferns, Bengaluru\n\n### 2025\n\n6. **Agentic AI Connect – Chennai** — December 20, 2025 — Yuniq, Chennai\n\n7. **Sprint to Imagine Cup – Bengaluru** — November 15, 2025 — Microsoft Ferns, Bengaluru\n\n8. **Sprint to Imagine Cup – Chennai** — October 18, 2025 — Microsoft Office, Chennai"
   },
   {
     "section": "events",
-    "text": "- **Participants:** 80+\n\n---\n\n## Other Past Events\n\n- Learn Azure Bot Services & Identity Access – Dec 28, 2024 – KARE, Srivilliputhur  \n- AI in Action – Exploring Innovation at Microsoft – Jan 3, 2025 – Microsoft Reactor, Bengaluru  \n- InnovateHer with Microsoft (Women-Only) – Apr 10 – Microsoft Ferns, Bengaluru  \n- Microsoft Global AI Tour – Season of Agents – May 17 – Microsoft Ferns, Bengaluru  \n- Global GenAI Bootcamp – Bengaluru – Jul 5 – Microsoft Ferns, Bengaluru  \n- Microsoft AgentVerse – Bengaluru – Aug 9 – Microsoft Ferns, Bengaluru  \n- Sprint to Imagine Cup – Chennai – Oct 18 – Microsoft Office, Chennai  \n- Sprint to Imagine Cup – Bengaluru – Nov 15 – Microsoft Ferns, Bengaluru  \n- Agentic AI Connect – Chennai – Dec 20 – Yuniq, Chennai  \n- Agentic AI Connect – Bengaluru – Jan 10 – Microsoft Ferns, Bengaluru  \n- Code & Cold Pizza – Bengaluru – Feb 7 – Polaris School of Technology  \n- AI Native Meetup – Chennai - Feb 28 -Yuniq, Ticel BioPark, Chennai\n- GitHub Copilot Dev Day – Bengaluru - March 14 - Microsoft Reactor\n- GitHub Copilot Dev Day – Chennai -March 28 - NIQ Chennai"
+    "text": "i** — October 18, 2025 — Microsoft Office, Chennai\n\n9. **Microsoft AgentVerse – Bengaluru** — August 9, 2025 — Microsoft Ferns, Bengaluru\n\n10. **Global GenAI Bootcamp – Bengaluru** — July 5, 2025 — Microsoft Ferns, Bengaluru\n\n11. **Microsoft Global AI Tour – Season of Agents** — May 17, 2025 — Microsoft Ferns, Bengaluru\n\n12. **InnovateHer with Microsoft (Women-Only)** — April 10, 2025 — Microsoft Ferns, Bengaluru"
   },
   {
     "section": "events",
-    "text": "Copilot Dev Day – Chennai -March 28 - NIQ Chennai\n\n---\n\n## Major Event Series\n\n- Code & Cold Pizza  \n- Agentic AI Connect  \n- Microsoft Developer Day  \n- GitHub Copilot Bootcamp  \n- Global GenAI Bootcamp  \n- Microsoft Global AI Tour  \n- InnovateHer – Women in AI & Tech  \n- Sprint to Imagine Cup  \n- Microsoft AgentVerse  \n- AI Innovation Days  \n- NexusAI\n\n---\n\n## Event Formats"
+    "text": "y)** — April 10, 2025 — Microsoft Ferns, Bengaluru\n\n13. **AI in Action – Exploring Innovation at Microsoft** — January 3, 2025 — Microsoft Reactor, Bengaluru\n\n### 2024\n\n14. **Learn Azure Bot Services & Identity Access** — December 28, 2024 — KARE, Srivilliputhur\n\n---\n\n## Major Event Series\n\nTechNexus runs recurring event series across cities:"
   },
   {
     "section": "events",
-    "text": "Innovation Days  \n- NexusAI\n\n---\n\n## Event Formats\n\n- Meetups  \n- Developer Days  \n- AI Conferences  \n- Microsoft Partner Events  \n- Bootcamps  \n- Workshops  \n- Certification Tracks  \n- Student Innovation Days  \n- Women-in-Tech Programs\n\n---\n\n## Technology Areas Covered"
+    "text": "chNexus runs recurring event series across cities:\n\n- **Code & Cold Pizza** — Informal developer networking with food and talks\n- **Agentic AI Connect** — Deep dives into agentic AI and multi-agent systems\n- **NexusAI** — Flagship AI meetup series\n- **Microsoft Developer Day** — Microsoft ecosystem and tooling\n- **GitHub Copilot Bootcamp** — Hands-on GitHub Copilot sessions\n- **Global GenAI Bootcamp** — Generative AI skills and certification prep\n- **Microsoft Global AI Tour** — Part of Microsoft's worldwide AI event series\n- **InnovateHer – Women in AI & Tech** — Women-only innovation programs\n- **Sprint to Imagine Cup** — Student innovation competition preparation\n- **Microsoft AgentVerse** — Multi-agent and AI orchestration deep dives\n- **AI Innovation Days** — Industry-focused AI application sessions\n- **Dev Conclave** — Exclusive developer networking and collaboration gatherings"
   },
   {
     "section": "events",
-    "text": "in-Tech Programs\n\n---\n\n## Technology Areas Covered\n\n- Artificial Intelligence (AI)  \n- Generative AI  \n- Agentic AI & Multi-Agent Systems  \n- Data Platforms & Analytics  \n- Cloud Computing  \n- Microsoft Azure  \n- GitHub Copilot  \n- Software Engineering  \n- DevOps  \n- RAG Systems & Intelligent Workflows\n\n---\n\n## Registration & Entry\n\nMost events require:\n- RSVP / Registration  \n- Event pass or confirmation  \n- Joining the official TechNexus WhatsApp group"
+    "text": "developer networking and collaboration gatherings\n\n---\n\n## Event Formats\n\nMeetups, Developer Days, AI Conferences, Microsoft Partner Events, Bootcamps, Workshops, Certification Tracks, Student Innovation Days, Women-in-Tech Programs, Hybrid/Online Sessions.\n\n---\n\n## Technology Areas Covered"
   },
   {
     "section": "events",
-    "text": "- Joining the official TechNexus WhatsApp group\n\nFor high-demand or Microsoft-hosted events:\n- WhatsApp confirmation is mandatory  \n- Double verification may be required  \n- Only approved participants with passes are allowed entry\n\nParticipants are advised to:\n- Arrive at least 30 minutes early for check-in\n\n---\n\n## Communication"
+    "text": "Online Sessions.\n\n---\n\n## Technology Areas Covered\n\nArtificial Intelligence (AI), Generative AI, Agentic AI & Multi-Agent Systems, Data Platforms & Analytics, Cloud Computing, Microsoft Azure, GitHub Copilot, Software Engineering, DevOps, RAG Systems & Intelligent Workflows.\n\n---\n\n## Registration & Entry\n\nMost events require:\n- RSVP on Meetup: https://www.meetup.com/technexus-community/\n- Event pass or confirmation email\n- Joining the official TechNexus WhatsApp group"
   },
   {
     "section": "events",
-    "text": "minutes early for check-in\n\n---\n\n## Communication\n\nThe **TechNexus WhatsApp group** is the primary communication channel for:\n- Confirmations and approvals  \n- Entry instructions  \n- Agenda updates  \n- Last-minute announcements"
+    "text": "il\n- Joining the official TechNexus WhatsApp group\n\nFor high-demand or Microsoft-hosted events:\n- WhatsApp confirmation is mandatory\n- Double verification may be required\n- Only approved participants with passes are allowed entry\n- Arrive at least 30 minutes early for check-in\n\n---\n\n## Stay Updated"
+  },
+  {
+    "section": "events",
+    "text": "0 minutes early for check-in\n\n---\n\n## Stay Updated\n\n- **Meetup** (RSVP & event listings): https://www.meetup.com/technexus-community/\n- **LinkedIn**: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- **Instagram**: https://www.instagram.com/technexus.community/\n- **YouTube** (event recordings): https://www.youtube.com/@TechNexus_Community\n- **WhatsApp Group**: Primary channel for confirmations and announcements"
   },
   {
     "section": "faq",
-    "text": "# TechNexus FAQ\n\n## Is TechNexus open to everyone?\n\nYes. TechNexus is an open participation technology ecosystem with no mandatory membership fee. Students, early-career professionals, developers, AI/data/cloud enthusiasts, founders, and industry practitioners can all participate (subject to event-specific policies).\n\n## How do I join or get started?"
+    "text": "# TechNexus FAQ\n\n## Is TechNexus open to everyone?\n\nYes. TechNexus is an open participation technology ecosystem with no mandatory membership fee. Students, early-career professionals, developers, AI/data/cloud enthusiasts, founders, and industry practitioners can all participate (subject to event-specific policies).\n\n## How do I join TechNexus?"
   },
   {
     "section": "faq",
-    "text": "cific policies).\n\n## How do I join or get started?\n\nJoin the official TechNexus WhatsApp group (the primary operational channel), follow event announcements, RSVP for events you want to attend, and participate in workshops, bootcamps, or networking sessions.\n\n## How do I attend an event?"
+    "text": "t-specific policies).\n\n## How do I join TechNexus?\n\nFollow these steps to join:\n1. RSVP for events on Meetup: https://www.meetup.com/technexus-community/\n2. Join the official TechNexus WhatsApp group (primary channel for updates and confirmations)\n3. Follow our social media for announcements\nMembership is completely free.\n\n## Where can I find TechNexus online?"
   },
   {
     "section": "faq",
-    "text": "networking sessions.\n\n## How do I attend an event?\n\nRegistration may require RSVP, approval, or invitation depending on the event. For controlled-access events you'll need an event pass, WhatsApp confirmation, and venue verification. Some events also require arriving 30 minutes before start time.\n\n## What types of events are run?\n\nMeetups, workshops, bootcamps, conferences, certification tracks, women-only events, and innovation programs.\n\n## What learning programs are offered?"
+    "text": "etely free.\n\n## Where can I find TechNexus online?\n\n- **Meetup** (RSVP for events): https://www.meetup.com/technexus-community/\n- **LinkedIn**: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- **Instagram**: https://www.instagram.com/technexus.community/\n- **YouTube** (event recordings): https://www.youtube.com/@TechNexus_Community\n\n## How do I follow TechNexus on social media?"
   },
   {
     "section": "faq",
-    "text": "programs.\n\n## What learning programs are offered?\n\nSkill-Up programs and certification tracks for Microsoft Azure and AI, with guided curriculum, expert sessions, certification readiness, and eligibility-based discounted Microsoft certification vouchers.\n\n## What event access categories exist?\n\nOpen Events, RSVP-Based Events, Invitation-Based Events, Partner-Restricted Events, and Women-Only Events.\n\n## Where do I get updates?"
+    "text": "ity\n\n## How do I follow TechNexus on social media?\n\n- Meetup: https://www.meetup.com/technexus-community/\n- LinkedIn: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- Instagram: https://www.instagram.com/technexus.community/\n- YouTube: https://www.youtube.com/@TechNexus_Community\n\n## How do I attend an event?"
   },
   {
     "section": "faq",
-    "text": "and Women-Only Events.\n\n## Where do I get updates?\n\nPrimary: TechNexus WhatsApp groups. Secondary: Meetup platform for public listings and RSVPs."
+    "text": "@TechNexus_Community\n\n## How do I attend an event?\n\nRSVP on Meetup: https://www.meetup.com/technexus-community/\nFor controlled-access events you'll need an event pass, WhatsApp confirmation, and venue verification. Arrive 30 minutes early for check-in.\n\n## What types of events are run?\n\nMeetups, workshops, bootcamps, conferences, certification tracks, women-only events (InnovateHer), developer days, and innovation programs across Bengaluru, Chennai, and Srivilliputhur."
+  },
+  {
+    "section": "faq",
+    "text": "ams across Bengaluru, Chennai, and Srivilliputhur.\n\n## What learning programs are offered?\n\nSkill-Up programs and certification tracks for Microsoft Azure and AI, with guided curriculum, expert sessions, certification readiness, and eligibility-based discounted Microsoft certification vouchers.\n\n## What event access categories exist?\n\nOpen Events, RSVP-Based Events, Invitation-Based Events, Partner-Restricted Events, and Women-Only Events.\n\n## Where do I get updates?"
+  },
+  {
+    "section": "faq",
+    "text": "and Women-Only Events.\n\n## Where do I get updates?\n\n- **Primary**: TechNexus WhatsApp group (confirmations, entry instructions, agenda updates)\n- **Meetup**: https://www.meetup.com/technexus-community/\n- **LinkedIn**: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- **Instagram**: https://www.instagram.com/technexus.community/\n- **YouTube**: https://www.youtube.com/@TechNexus_Community\n\n## Is there a cost to join?"
+  },
+  {
+    "section": "faq",
+    "text": "/@TechNexus_Community\n\n## Is there a cost to join?\n\nNo — TechNexus membership is completely free. Most events are also free. Some certification-related or partner programs may have nominal charges.\n\n## Who runs TechNexus?\n\n- **Vinodh Kumar** — Co-Founder, Community Lead\n- **Mohammed Azaruddin** — Co-Founder, Operations Lead\nSupported by a volunteer team of moderators, organizers, and mentors.\n\n## How many members does TechNexus have?"
+  },
+  {
+    "section": "faq",
+    "text": "mentors.\n\n## How many members does TechNexus have?\n\nTechNexus has 12,000+ followers and is growing across multiple cities including Bengaluru and Chennai."
   },
   {
     "section": "getting_started",
-    "text": "# Getting Started with TechNexus\n\n## Step 1: Join the Community\n\nRegister through the official TechNexus website or accept an invitation from an existing member. Membership is completely free.\n\n## Step 2: Introduce Yourself\n\nPost a brief introduction in the welcome channel sharing your name, interests, and what you hope to learn.\n\n## Step 3: Explore Resources\n\nBrowse the community knowledge base, pinned messages, and shared learning resources to get familiar with available materials."
+    "text": "# Getting Started with TechNexus\n\nTechNexus is free to join and open to everyone in tech — developers, students, AI enthusiasts, and working professionals.\n\n---\n\n## Step 1: Follow TechNexus Online\n\nConnect with TechNexus on your preferred platform:"
   },
   {
     "section": "getting_started",
-    "text": "esources to get familiar with available materials.\n\n## Step 4: Attend Your First Event\n\nJoin the next weekly meetup (every Sunday at 10 AM) or a workshop to meet other members and start learning together.\n\n## Step 5: Join a Project or Study Group\n\nCollaborate with fellow members on ongoing projects or form a study group around a topic you're interested in.\n\n## Step 6: Ask Questions and Contribute"
+    "text": "Connect with TechNexus on your preferred platform:\n\n- **Meetup** (RSVP for events): https://www.meetup.com/technexus-community/\n- **LinkedIn**: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- **Instagram**: https://www.instagram.com/technexus.community/\n- **YouTube** (watch past event recordings): https://www.youtube.com/@TechNexus_Community\n\n---\n\n## Step 2: Join the WhatsApp Group"
   },
   {
     "section": "getting_started",
-    "text": "ested in.\n\n## Step 6: Ask Questions and Contribute\n\nDon't hesitate to ask questions in discussion channels. Share your own knowledge and help others as you grow."
+    "text": "Community\n\n---\n\n## Step 2: Join the WhatsApp Group\n\nThe TechNexus WhatsApp group is the primary communication channel. You'll receive:\n- Event confirmations and approvals\n- Entry instructions and passes\n- Agenda updates and announcements\n\nConnect via Meetup or ask an existing member for an invite link.\n\n---\n\n## Step 3: RSVP for Your First Event"
+  },
+  {
+    "section": "getting_started",
+    "text": "e link.\n\n---\n\n## Step 3: RSVP for Your First Event\n\nBrowse and RSVP for upcoming events: https://www.meetup.com/technexus-community/\nFor Microsoft-hosted or high-demand events, WhatsApp confirmation is also required.\n\n---\n\n## Step 4: Attend & Network\n\n- Arrive at least 30 minutes early for in-person events\n- Bring your event pass or RSVP confirmation\n- Engage in sessions, workshops, and networking discussions\n\n---\n\n## Step 5: Participate & Contribute"
+  },
+  {
+    "section": "getting_started",
+    "text": "cussions\n\n---\n\n## Step 5: Participate & Contribute\n\n- Join study groups or project collaborations\n- Share knowledge in community discussions\n- Volunteer as a moderator or organizer as you grow\n\n---\n\n## Step 6: Stay Updated"
+  },
+  {
+    "section": "getting_started",
+    "text": "rganizer as you grow\n\n---\n\n## Step 6: Stay Updated\n\nNever miss an event — follow all official channels:\n- Meetup: https://www.meetup.com/technexus-community/\n- LinkedIn: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- Instagram: https://www.instagram.com/technexus.community/\n- YouTube: https://www.youtube.com/@TechNexus_Community"
   },
   {
     "section": "history",
@@ -117,11 +149,19 @@
   },
   {
     "section": "overview",
-    "text": "nnovation and Industry Trends.\n\n## How It Operates\n\nTechNexus runs as a hybrid community via physical in-person meetups, technology workshops, learning and skill-building events, and community networking sessions.\n\n## Who It's For\n\nDevelopers, engineers, AI enthusiasts, entrepreneurs, students, working professionals, technology founders and innovators.\n\n## Mission and Culture"
+    "text": "nnovation and Industry Trends.\n\n## How It Operates\n\nTechNexus runs as a hybrid community via physical in-person meetups, technology workshops, learning and skill-building events, and community networking sessions across Bengaluru, Chennai, and Srivilliputhur.\n\n## Who It's For\n\nDevelopers, engineers, AI enthusiasts, entrepreneurs, students, working professionals, technology founders and innovators.\n\n## Mission and Culture"
   },
   {
     "section": "overview",
-    "text": "y founders and innovators.\n\n## Mission and Culture\n\nOpen learning, innovation, professional growth, industry relevance, and collaboration over competition. Tagline: **\"Collaborate. Innovate. Elevate.\"**\n\n## Leadership\n\n- **Vinodh Kumar** — Co-Founder, Community Lead\n- **Mohammed Azaruddin** — Co-Founder, Operations Lead\n\n## Community Reach\n\nTechNexus has 12,000 followers and is growing across multiple cities."
+    "text": "y founders and innovators.\n\n## Mission and Culture\n\nOpen learning, innovation, professional growth, industry relevance, and collaboration over competition. Tagline: **\"Collaborate. Innovate. Elevate.\"**\n\n## Leadership\n\n- **Vinodh Kumar** — Co-Founder, Community Lead\n- **Mohammed Azaruddin** — Co-Founder, Operations Lead\n\n## Community Reach\n\nTechNexus has 12,000+ followers and is growing rapidly across multiple cities.\n\n---\n\n## Official Links & Social Media"
+  },
+  {
+    "section": "overview",
+    "text": "ple cities.\n\n---\n\n## Official Links & Social Media\n\nConnect with TechNexus on all platforms:\n\n- **Meetup** (RSVP for events): https://www.meetup.com/technexus-community/\n- **LinkedIn** (updates & announcements): https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all\n- **Instagram** (community highlights): https://www.instagram.com/technexus.community/\n- **YouTube** (event recordings & sessions): https://www.youtube.com/@TechNexus_Community"
+  },
+  {
+    "section": "overview",
+    "text": "ons): https://www.youtube.com/@TechNexus_Community\n\nTo join, RSVP on Meetup and join the official WhatsApp group for confirmations and announcements."
   },
   {
     "section": "roles",
