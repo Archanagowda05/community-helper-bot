@@ -51,10 +51,6 @@ def load_kb():
     _model = SentenceTransformer(MODEL_NAME)
     print(f"Knowledge base loaded: {_index.ntotal} vectors.")
 
-
-<<<<<<< HEAD
-def search(query: str, top_k: int = 3) -> list[dict]:
-=======
 def _is_upcoming_query(query: str) -> bool:
     """Return True if the query is asking about the next/upcoming event."""
     q = query.lower()
@@ -74,8 +70,7 @@ def _get_upcoming_event_chunk():
     return None
 
 
-def search(query: str, top_k: int = 3) -> list:
->>>>>>> 49a2026 (fixed issues)
+def search(query: str, top_k: int = 3) -> list[dict]:
     """
     Search the knowledge base for the most relevant chunks.
 
