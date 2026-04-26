@@ -8,7 +8,7 @@ Artificial Intelligence, Data and Analytics, Internet of Things (IoT), Cloud and
 
 ## How It Operates
 
-TechNexus runs as a hybrid community via physical in-person meetups, technology workshops, learning and skill-building events, and community networking sessions.
+TechNexus runs as a hybrid community via physical in-person meetups, technology workshops, learning and skill-building events, and community networking sessions across Bengaluru, Chennai, and Srivilliputhur.
 
 ## Who It's For
 
@@ -25,4 +25,17 @@ Open learning, innovation, professional growth, industry relevance, and collabor
 
 ## Community Reach
 
-TechNexus has 12,000 followers and is growing across multiple cities.
+TechNexus has 12,000+ followers and is growing rapidly across multiple cities.
+
+---
+
+## Official Links & Social Media
+
+Connect with TechNexus on all platforms:
+
+- **Meetup** (RSVP for events): https://www.meetup.com/technexus-community/
+- **LinkedIn** (updates & announcements): https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all
+- **Instagram** (community highlights): https://www.instagram.com/technexus.community/
+- **YouTube** (event recordings & sessions): https://www.youtube.com/@TechNexus_Community
+
+To join, RSVP on Meetup and join the official WhatsApp group for confirmations and announcements.

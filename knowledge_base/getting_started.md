@@ -1,25 +1,58 @@
 # Getting Started with TechNexus
 
-## Step 1: Join the Community
+TechNexus is free to join and open to everyone in tech — developers, students, AI enthusiasts, and working professionals.
 
-Register through the official TechNexus website or accept an invitation from an existing member. Membership is completely free.
+---
 
-## Step 2: Introduce Yourself
+## Step 1: Follow TechNexus Online
 
-Post a brief introduction in the welcome channel sharing your name, interests, and what you hope to learn.
+Connect with TechNexus on your preferred platform:
 
-## Step 3: Explore Resources
+- **Meetup** (RSVP for events): https://www.meetup.com/technexus-community/
+- **LinkedIn**: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all
+- **Instagram**: https://www.instagram.com/technexus.community/
+- **YouTube** (watch past event recordings): https://www.youtube.com/@TechNexus_Community
 
-Browse the community knowledge base, pinned messages, and shared learning resources to get familiar with available materials.
+---
 
-## Step 4: Attend Your First Event
+## Step 2: Join the WhatsApp Group
 
-Join the next weekly meetup (every Sunday at 10 AM) or a workshop to meet other members and start learning together.
+The TechNexus WhatsApp group is the primary communication channel. You'll receive:
+- Event confirmations and approvals
+- Entry instructions and passes
+- Agenda updates and announcements
 
-## Step 5: Join a Project or Study Group
+Connect via Meetup or ask an existing member for an invite link.
 
-Collaborate with fellow members on ongoing projects or form a study group around a topic you're interested in.
+---
 
-## Step 6: Ask Questions and Contribute
+## Step 3: RSVP for Your First Event
 
-Don't hesitate to ask questions in discussion channels. Share your own knowledge and help others as you grow.
+Browse and RSVP for upcoming events: https://www.meetup.com/technexus-community/
+For Microsoft-hosted or high-demand events, WhatsApp confirmation is also required.
+
+---
+
+## Step 4: Attend & Network
+
+- Arrive at least 30 minutes early for in-person events
+- Bring your event pass or RSVP confirmation
+- Engage in sessions, workshops, and networking discussions
+
+---
+
+## Step 5: Participate & Contribute
+
+- Join study groups or project collaborations
+- Share knowledge in community discussions
+- Volunteer as a moderator or organizer as you grow
+
+---
+
+## Step 6: Stay Updated
+
+Never miss an event — follow all official channels:
+- Meetup: https://www.meetup.com/technexus-community/
+- LinkedIn: https://www.linkedin.com/company/technexuscommunity/posts/?feedView=all
+- Instagram: https://www.instagram.com/technexus.community/
+- YouTube: https://www.youtube.com/@TechNexus_Community
