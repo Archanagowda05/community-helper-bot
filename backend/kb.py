@@ -70,7 +70,8 @@ def _get_upcoming_event_chunk():
     return None
 
 
-def search(query: str, top_k: int = 3) -> list[dict]:
+def search(query: str, top_k: int = 3) -> list:
+
     """
     Search the knowledge base for the most relevant chunks.
 
