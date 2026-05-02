@@ -2,8 +2,82 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { X, Send, MessageCircle } from "lucide-react";
 import ChatMessage, { type Message } from "./ChatMessage";
 import TypingIndicator from "./TypingIndicator";
+import { searchKnowledge } from "@/lib/knowledgeBase";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+// ── Mistral direct call ────────────────────────────────────────────────────
+// Free tier: sign up at console.mistral.ai → Experiment plan (no credit card)
+// Add VITE_MISTRAL_API_KEY=your_key_here to your .env file
+const MISTRAL_API_KEY = import.meta.env.VITE_MISTRAL_API_KEY || "";
+const MISTRAL_URL = "https://api.mistral.ai/v1/chat/completions";
+const MISTRAL_MODEL = "open-mistral-nemo"; // free, fast, lightweight 12B model
+
+const SYSTEM_PROMPT = `You are the TechNexus Support Assistant — friendly, warm, and professional.
+
+STRICT RULES:
+1. GREETINGS (hi/hello/hey/okay/lol — single casual words with NO question): Reply with ONE short warm line. Never start a factual answer with a greeting.
+2. FACTUAL QUESTIONS: Answer directly using ONLY the context below. Do NOT prepend greetings. Just answer.
+3. Keep answers SHORT (2-4 sentences). Use bullet points only when listing 3+ items.
+4. Off-topic questions: Gently redirect. Vary your redirects.
+5. NEVER hallucinate. NEVER repeat the same redirect twice in a row.
+6. Never mention "context", "knowledge base", or "documents".
+
+UPCOMING EVENT RULE (CRITICAL):
+- For "upcoming", "next", "future", "latest" event questions: find the "## Upcoming Event" section in context and return its FULL details (name, date, location, time, description) as bullet points.
+- NEVER use events from "Previous Events" or "Major Event Series" as the upcoming event.
+
+LINKS RULE:
+- LinkedIn: https://www.linkedin.com/company/technexuscommunity/
+- Meetup: https://www.meetup.com/technexus-community/
+- Instagram: https://www.instagram.com/technexus.community/
+- YouTube: https://www.youtube.com/@TechNexus_Community
+
+Context:
+{context}`;
+
+const NO_CONTEXT_RESPONSE =
+  "I'm not sure about that one, but I'd love to help with anything TechNexus-related — events, community info, how to join, and more! 😊";
+
+async function callMistral(userMessage: string): Promise<string> {
+  // Use local knowledge base to build context (same logic as Python backend)
+  const context = searchKnowledge(userMessage);
+
+  // No API key → fall back to local knowledge base answer directly
+  if (!MISTRAL_API_KEY) {
+    return context || NO_CONTEXT_RESPONSE;
+  }
+
+  const systemWithContext = SYSTEM_PROMPT.replace(
+    "{context}",
+    context || "No specific context found."
+  );
+
+  const response = await fetch(MISTRAL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${MISTRAL_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: MISTRAL_MODEL,
+      messages: [
+        { role: "system", content: systemWithContext },
+        { role: "user", content: userMessage },
+      ],
+      temperature: 0.3,
+      max_tokens: 512,
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Mistral API error ${response.status}: ${err}`);
+  }
+
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content ?? NO_CONTEXT_RESPONSE;
+}
+
+// ── Component ──────────────────────────────────────────────────────────────
 
 const WELCOME_MESSAGE: Message = {
   id: "welcome",
@@ -40,13 +114,8 @@ const ChatWindow = ({ onClose, className = "" }: ChatWindowProps) => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, []);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping, scrollToBottom]);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+  useEffect(() => { scrollToBottom(); }, [messages, isTyping, scrollToBottom]);
+  useEffect(() => { inputRef.current?.focus(); }, []);
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || isTyping) return;
@@ -64,51 +133,35 @@ const ChatWindow = ({ onClose, className = "" }: ChatWindowProps) => {
     setIsTyping(true);
 
     try {
-      const res = await fetch(`${API_URL}/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
-      });
-
-      if (!res.ok) throw new Error("API request failed");
-
-      const data = await res.json();
-      const botMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "bot",
-        content: data.reply,
-        timestamp: new Date(),
-      };
+      const reply = await callMistral(text);
       setIsTyping(false);
-      setMessages((prev) => [...prev, botMsg]);
+      setMessages((prev) => [
+        ...prev,
+        { id: (Date.now() + 1).toString(), role: "bot", content: reply, timestamp: new Date() },
+      ]);
       setShowChips(true);
-
-    
     } catch (err) {
-      console.error("[ChatBot] Backend unreachable, using local fallback:", err);
-      const { searchKnowledge } = await import("@/lib/knowledgeBase");
+      // Graceful fallback: use local knowledge base if Mistral fails
+      console.error("[ChatBot] Mistral API failed, using local fallback:", err);
       const answer = searchKnowledge(text);
-      const botMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "bot",
-        content: answer,
-        timestamp: new Date(),
-      };
       setIsTyping(false);
-      setMessages((prev) => [...prev, botMsg]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: "bot",
+          content: answer || NO_CONTEXT_RESPONSE,
+          timestamp: new Date(),
+        },
+      ]);
       setShowChips(true);
     }
   };
 
   const handleSend = () => sendMessage(input.trim());
-
   const handleChipClick = (query: string) => sendMessage(query);
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); }
   };
 
   return (
