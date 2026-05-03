@@ -1,73 +1,84 @@
-# Welcome to your Lovable project
+# 🤖 Community Helper Bot
 
-## Project info
+> **TechNexus AI Support Assistant — powered by Mistral AI**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Mistral](https://img.shields.io/badge/Mistral-Nemo-orange)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📖 What is this?
 
-**Use Lovable**
+An AI-powered chat widget for the **TechNexus** community. It answers questions about events, rules, roles, moderation, and how to get started — right from the browser, no backend needed.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ⚙️ How It Works
 
-**Use your preferred IDE**
+1. User sends a message in the chat widget
+2. The bot searches the local TechNexus knowledge base for relevant context
+3. Context is sent to the **Mistral AI API** which generates a friendly, accurate response
+4. If the API is unavailable, the bot falls back to the local knowledge base automatically
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Tech Stack
 
-Follow these steps:
+| | |
+|---|---|
+| **Frontend** | React 18 + TypeScript |
+| **Styling** | Tailwind CSS + shadcn/ui |
+| **AI** | Mistral API (`open-mistral-nemo`) |
+| **Build Tool** | Vite |
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📁 Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+community-helper-bot/
+├── src/
+│   ├── components/
+│   │   ├── ChatWindow.tsx        # Main chat UI — calls Mistral API directly
+│   │   ├── ChatMessage.tsx       # Renders messages with markdown support
+│   │   ├── ChatBot.tsx           # Floating button + open/close animation
+│   │   └── TypingIndicator.tsx   # Animated typing dots
+│   └── lib/
+│       └── knowledgeBase.ts      # TechNexus knowledge base + fallback search
+├── knowledge_base/
+│   ├── events.md
+│   ├── faq.md
+│   ├── rules.md
+│   ├── roles.md
+│   ├── moderation.md
+│   ├── overview.md
+│   ├── history.md
+│   └── getting_started.md
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📚 Knowledge Base
 
-**Use GitHub Codespaces**
+| File | Contents |
+|---|---|
+| `events.md` | Upcoming & past TechNexus events |
+| `faq.md` | Common questions and answers |
+| `rules.md` | Community conduct guidelines |
+| `roles.md` | Member roles and what they mean |
+| `moderation.md` | How moderation works |
+| `overview.md` | What TechNexus is |
+| `history.md` | Community origin and growth |
+| `getting_started.md` | How to join TechNexus |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🔗 TechNexus Community Links
 
-This project is built with:
+- 💼 LinkedIn: [linkedin.com/company/technexuscommunity](https://www.linkedin.com/company/technexuscommunity/)
+- 📅 Meetup: [meetup.com/technexus-community](https://www.meetup.com/technexus-community/)
+- 📸 Instagram: [instagram.com/technexus.community](https://www.instagram.com/technexus.community/)
+- 🎥 YouTube: [youtube.com/@TechNexus_Community](https://www.youtube.com/@TechNexus_Community)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+*Built with ❤️ for the TechNexus Community*
